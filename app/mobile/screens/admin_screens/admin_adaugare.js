@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native"
 
-import Home from './screens/home'
-
-export default class App extends React.Component {
+export default class AdminAdaugareComponent extends React.Component {
   render() {
-    return <Home/>;
+    return (
+      <View style={styles.container}>
+        <Text>Hello from admin_adaugare!</Text>
+      </View>
+    );
   }
 }
 

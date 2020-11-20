@@ -1,11 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native"
 
-import Home from './screens/home'
-
-export default class App extends React.Component {
+export default class HomeComponent extends React.Component {
   render() {
-    return <Home/>;
+    return (
+      <View style={styles.container}>
+        <Text>Hello from home!</Text>
+      </View>
+
+    );
   }
 }
 
