@@ -1,0 +1,1 @@
+In acest director se vor adauga doar ecranele folosite in proiect.

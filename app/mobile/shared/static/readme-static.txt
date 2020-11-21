@@ -1,0 +1,1 @@
+In acest director se vor adauga toate fisierele statice ale proiectului(poze,fisiere,samd).
