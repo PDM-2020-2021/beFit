@@ -5,26 +5,29 @@ import {
 
 import AppTile from '../shared/componente/tile'
 import SharedStyles from '../shared/assets/shared-styles'
+import { render } from "react-dom";
 
 
-export default function Abonamente({ navigation }) {
-    return (
-        <View style={SharedStyles.container}>
+export default class Abonamente extends React.Component {
+    render(){
+        return (
+            <View style={SharedStyles.container}>
 
-            <AppTile
-                id={1}
-                title="Abonament 1"
-                description="       Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                getImage={require('../shared/static/sala_fitness.png')}
-            ></AppTile>
+                <AppTile
+                    id={1}
+                    title="Abonament 1"
+                    description="       Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    getImage={require('../shared/static/sala_fitness.png')}
+                ></AppTile>
 
-            <AppTile
-                id={2}
-                title="Abonament 2"
-                description="       Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                getImage={require('../shared/static/sala_fitness.png')}
-            ></AppTile>
+                <AppTile
+                    id={2}
+                    title="Abonament 2"
+                    description="       Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    getImage={require('../shared/static/sala_fitness.png')}
+                ></AppTile>
 
-        </View>
-    );
+            </View>
+        );
+    }
 }

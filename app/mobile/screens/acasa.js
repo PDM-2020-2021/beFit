@@ -3,36 +3,44 @@ import {
   View,
   Image,
 } from 'react-native';
-import * as Font from 'expo-font';
 
+import * as Font from 'expo-font';
 import BfLabeledButton from '../shared/componente/bf-labeled-button';
 import SharedStyles from '../shared/assets/shared-styles';
 
 
-export default function Acasa({ navigation }) {
-Font.useFonts({Comic: require('../shared/assets/fonts/Comic.ttf')},);
-  return (
-    <View style={SharedStyles.container}>
+export default class Acasa extends React.Component {
+  async load() {
+    await Font.loadAsync(
+      { Comic: require('../shared/assets/fonts/Comic.ttf') }
+    )
+  }
 
-      <Image source={require('../shared/static/logo.png')} />
+  render() {
+    this.load();
+    return (
+      <View style={SharedStyles.container}>
 
-      <BfLabeledButton
-        title="Autentificare"
-        onPress={() => navigation.navigate("Autentificare")}
-      />
+        <Image source={require('../shared/static/logo.png')} />
 
-      <BfLabeledButton
-        title="Înregistrare"
-        onPress={() => navigation.navigate("Inregistrare")}
-      />
+        <BfLabeledButton
+          title="Autentificare"
+          onPress={() => this.props.navigation.navigate("Autentificare")}
+        />
 
-      <BfLabeledButton
-        title="Abonamente"
-        onPress={() => navigation.navigate("Abonamente")}
-      />
+        <BfLabeledButton
+          title="Înregistrare"
+          onPress={() => this.props.navigation.navigate("Inregistrare")}
+        />
 
-    </View>
-  );
+        <BfLabeledButton
+          title="Abonamente"
+          onPress={() => this.props.navigation.navigate("Abonamente")}
+        />
+
+      </View>
+    );
+  }
 }
 
 
