@@ -1,18 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {
+    Text,
+    View,
+} from 'react-native';
+
+import SharedStyles from '../shared/shared-styles'
+
 
 export default function Autentificare({ navigation }) {
     return (
-        <View style={styles.container}>
+        <View style={SharedStyles.container}>
             <Text>Autentificare</Text>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });

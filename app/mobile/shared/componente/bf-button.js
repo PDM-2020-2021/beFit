@@ -1,11 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+} from 'react-native';
+
 
 const BfButton = (props) => {
     return (
         <View>
             <TouchableOpacity
-                activeOpacity={0.8}
+                activeOpacity={0.2}
                 onPress={props.onPress}
                 style={styles.appButtonContainer}
             >
@@ -22,12 +28,12 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         margin: 5,
         padding: 10
-      },
-      appButtonText: {
+    },
+    appButtonText: {
         fontSize: 18,
         color: "#000",
         fontWeight: "bold",
         alignSelf: "center",
-      },
+    },
 });
 export default BfButton;

@@ -1,7 +1,10 @@
 import React from 'react';
-import { TextInput, StyleSheet, View, Text } from 'react-native';
+import {
+    View,
+} from 'react-native';
 
 import BfTextInput from './bf-text-input'
+
 
 const AuthForm = (props) => {
     return (

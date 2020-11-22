@@ -1,5 +1,12 @@
 import React from 'react';
-import { TextInput, StyleSheet, View, Image} from 'react-native';
+import {
+    TextInput,
+    StyleSheet,
+    View,
+    Image,
+} from 'react-native';
+
+
 const BfTextInput = (props) => {
     const [value, setValue] = React.useState();
 
@@ -12,7 +19,7 @@ const BfTextInput = (props) => {
             margin: 5,
             padding: 1
         },
-        image :{
+        image: {
             width: 20,
             height: 20,
             marginTop: 5,
@@ -29,13 +36,11 @@ const BfTextInput = (props) => {
     });
 
     return (
-
         <View style={styles.component_container}>
             <Image
-                style = {styles.image}
-                source = {props.image}
+                style={styles.image}
+                source={props.image}
             />
-
             <TextInput
                 editable
                 maxLength={props.maxLength}
@@ -46,7 +51,6 @@ const BfTextInput = (props) => {
                 placeholderTextColor='#ffc12e'
                 value={value}
             />
-
         </View>
     );
 }

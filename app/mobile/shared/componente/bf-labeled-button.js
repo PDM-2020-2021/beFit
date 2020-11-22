@@ -1,10 +1,15 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image} from 'react-native';
+import {
+    Text,
+    StyleSheet,
+    View,
+} from 'react-native';
+
 
 const BfLabeledButton = (props) => {
     return (
         <View>
-            
+
         </View>
     );
 }

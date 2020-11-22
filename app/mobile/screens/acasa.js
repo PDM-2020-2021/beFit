@@ -1,11 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Image,
+} from 'react-native';
 
 import BfButton from '../shared/componente/bf-button'
+import SharedStyles from '../shared/shared-styles'
+
 
 export default function Acasa({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View style={SharedStyles.container}>
 
       <Image source={require('../shared/static/logo.png')} />
 
@@ -28,12 +33,6 @@ export default function Acasa({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
 
 

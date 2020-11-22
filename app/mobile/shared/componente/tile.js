@@ -1,7 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TouchableOpacity,
+} from 'react-native';
 
-TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 
 const AppTile = (props) => {
     return (
@@ -20,11 +25,6 @@ const AppTile = (props) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     appTileContainer: {
         elevation: 8,
         borderRadius: 20,

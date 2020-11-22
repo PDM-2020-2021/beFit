@@ -1,18 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+} from 'react-native';
+
+import SharedStyles from '../shared/shared-styles'
+
 
 export default function Inregistrare({ navigation }) {
     return (
-        <View style={styles.container}>
+        <View style={SharedStyles.container}>
             <Text>Inregistrare</Text>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });

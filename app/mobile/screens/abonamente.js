@@ -1,10 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import {
+    View,
+} from 'react-native';
+
 import AppTile from '../shared/componente/tile'
+import SharedStyles from '../shared/shared-styles'
+
 
 export default function Abonamente({ navigation }) {
     return (
-        <View style={styles.container}>
+        <View style={SharedStyles.container}>
 
             <AppTile
                 id={1}
@@ -23,11 +28,3 @@ export default function Abonamente({ navigation }) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
