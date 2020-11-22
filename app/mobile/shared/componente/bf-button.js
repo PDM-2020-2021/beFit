@@ -6,25 +6,25 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
+import SharedVariables from '../shared-variables'
+
 
 const BfButton = (props) => {
     return (
-        <View>
-            <TouchableOpacity
-                activeOpacity={0.2}
-                onPress={props.onPress}
-                style={styles.appButtonContainer}
-            >
-                <Text style={styles.appButtonText}>{props.title}</Text>
-            </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={props.onPress}
+            style={styles.appButtonContainer}
+        >
+            <Text style={styles.appButtonText}>{props.title}</Text>
+        </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
     appButtonContainer: {
         elevation: 8,
-        backgroundColor: "#ffc12e",
+        backgroundColor: SharedVariables.bckgColor,
         borderRadius: 10,
         margin: 5,
         padding: 10

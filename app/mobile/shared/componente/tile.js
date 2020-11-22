@@ -7,6 +7,9 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
+import SharedVariables from '../shared-variables';
+
+
 
 const AppTile = (props) => {
     return (
@@ -29,7 +32,7 @@ const styles = StyleSheet.create({
         elevation: 8,
         borderRadius: 20,
         margin: 15,
-        backgroundColor: "#ffc12e",
+        backgroundColor: SharedVariables.bckgColor,
         flex: 1,
         height: 400,
     },

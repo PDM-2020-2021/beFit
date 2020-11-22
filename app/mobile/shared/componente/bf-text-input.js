@@ -6,6 +6,8 @@ import {
     Image,
 } from 'react-native';
 
+import SharedVariables from '../shared-variables';
+
 
 const BfTextInput = (props) => {
     const [value, setValue] = React.useState();
@@ -13,7 +15,7 @@ const BfTextInput = (props) => {
     const styles = StyleSheet.create({
         component_container: {
             flexDirection: 'row',
-            borderBottomColor: "#ffc12e",
+            borderBottomColor: SharedVariables.bckgColor,
             borderBottomWidth: 2,
             width: props.width,
             margin: 5,
@@ -26,7 +28,7 @@ const BfTextInput = (props) => {
             marginRight: 3,
         },
         input: {
-            color: "#ffc12e",
+            color: SharedVariables.bckgColor,
             marginBottom: 2,
             fontSize: 20,
             padding: 0,
@@ -48,12 +50,10 @@ const BfTextInput = (props) => {
                 onFocus={text => setValue('')}
                 onChangeText={text => setValue(text)}
                 placeholder={props.placeholder}
-                placeholderTextColor='#ffc12e'
+                placeholderTextColor= {SharedVariables.bckgColor}
                 value={value}
             />
         </View>
     );
 }
-
-
 export default BfTextInput; 

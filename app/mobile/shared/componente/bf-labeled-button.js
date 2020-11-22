@@ -8,9 +8,13 @@ import {
 
 const BfLabeledButton = (props) => {
     return (
-        <View>
-
-        </View>
+        <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={props.onPress}
+            style={styles.appButtonContainer}
+        >
+            <Text style={styles.appButtonText}>{props.title}</Text>
+        </TouchableOpacity>
     );
 }
 
