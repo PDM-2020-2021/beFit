@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 
@@ -19,6 +19,11 @@ export default function Acasa({ navigation }) {
         onPress={() => navigation.navigate("Inregistrare")}
       />
 
+      <AppButton
+        title="Abonamente"
+        onPress={() => navigation.navigate("Abonamente")}
+      />
+
     </View>
   );
 }
@@ -33,15 +38,14 @@ const styles = StyleSheet.create({
     elevation: 8,
     backgroundColor: "#ffc12e",
     borderRadius: 10,
-    margin: 10,
-    padding: 5
+    margin: 5,
+    padding: 10
   },
   appButtonText: {
     fontSize: 18,
     color: "#000",
     fontWeight: "bold",
     alignSelf: "center",
-    textTransform: "uppercase"
   },
 });
 
