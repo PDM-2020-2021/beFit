@@ -1,1 +1,0 @@
-In acest director se vor adauga toate componentele folosite in proiect(butoane, pop-ups, samd).
