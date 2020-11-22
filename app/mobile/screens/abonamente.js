@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 import AppTile from '../shared/componente/tile'
-import SharedStyles from '../shared/shared-styles'
+import SharedStyles from '../shared/assets/shared-styles'
 
 
 export default function Abonamente({ navigation }) {

@@ -3,28 +3,30 @@ import {
   View,
   Image,
 } from 'react-native';
+import * as Font from 'expo-font';
 
-import BfButton from '../shared/componente/bf-button'
-import SharedStyles from '../shared/shared-styles'
+import BfLabeledButton from '../shared/componente/bf-labeled-button';
+import SharedStyles from '../shared/assets/shared-styles';
 
 
 export default function Acasa({ navigation }) {
+Font.useFonts({Comic: require('../shared/assets/fonts/Comic.ttf')},);
   return (
     <View style={SharedStyles.container}>
 
       <Image source={require('../shared/static/logo.png')} />
 
-      <BfButton
+      <BfLabeledButton
         title="Autentificare"
         onPress={() => navigation.navigate("Autentificare")}
       />
 
-      <BfButton
+      <BfLabeledButton
         title="Înregistrare"
         onPress={() => navigation.navigate("Inregistrare")}
       />
 
-      <BfButton
+      <BfLabeledButton
         title="Abonamente"
         onPress={() => navigation.navigate("Abonamente")}
       />

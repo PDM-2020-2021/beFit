@@ -5,7 +5,7 @@ import {
     View,
 } from 'react-native';
 
-import SharedStyles from '../shared/shared-styles'
+import SharedStyles from '../shared/assets/shared-styles'
 
 
 export default function Inregistrare({ navigation }) {

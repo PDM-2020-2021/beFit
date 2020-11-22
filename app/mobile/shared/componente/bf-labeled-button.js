@@ -3,7 +3,10 @@ import {
     Text,
     StyleSheet,
     View,
+    TouchableOpacity,
 } from 'react-native';
+
+import SharedVariables from '../assets/shared-variables';
 
 
 const BfLabeledButton = (props) => {
@@ -11,12 +14,22 @@ const BfLabeledButton = (props) => {
         <TouchableOpacity
             activeOpacity={0.2}
             onPress={props.onPress}
-            style={styles.appButtonContainer}
         >
-            <Text style={styles.appButtonText}>{props.title}</Text>
+            <Text
+                style={styles.bf_label}
+            >
+                {props.title}
+            </Text>
         </TouchableOpacity>
     );
 }
 
-
-export default BfTextInput; 
+const styles = StyleSheet.create({
+    bf_label: {
+        fontFamily: 'Comic',
+        fontWeight: 'bold',
+        fontSize: 20,
+        color: SharedVariables.bckgColor,
+    },
+});
+export default BfLabeledButton; 

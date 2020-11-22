@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-import SharedVariables from '../shared-variables'
+import SharedVariables from '../assets/shared-variables'
 
 
 const BfButton = (props) => {
