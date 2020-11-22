@@ -1,11 +1,18 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 export default function Inregistrare({ navigation }) {
     return (
-        <View>
+        <View style={styles.container}>
             <Text>Inregistrare</Text>
-            <Button title="Autentificare" onPress={() => navigation.navigate("Autentificare")} />
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
