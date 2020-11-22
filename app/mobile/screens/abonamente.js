@@ -6,12 +6,14 @@ import {
 import AppTile from '../shared/componente/tile'
 import SharedStyles from '../shared/assets/shared-styles'
 import { render } from "react-dom";
+import { ScrollView } from "react-native-gesture-handler";
 
 
 export default class Abonamente extends React.Component {
-    render(){
+    render() {
         return (
-            <View style={SharedStyles.container}>
+            <ScrollView style={SharedStyles.container.alignItems,
+                SharedStyles.container.justifyContent, SharedStyles.container.flex}>
 
                 <AppTile
                     id={1}
@@ -27,7 +29,14 @@ export default class Abonamente extends React.Component {
                     getImage={require('../shared/static/sala_fitness.png')}
                 ></AppTile>
 
-            </View>
+                <AppTile
+                    id={3}
+                    title="Abonament 3"
+                    description="       Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    getImage={require('../shared/static/sala_fitness.png')}
+                ></AppTile>
+
+            </ScrollView>
         );
     }
 }
