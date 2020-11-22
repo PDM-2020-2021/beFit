@@ -3,6 +3,22 @@ import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-n
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 
+const AppTile = (props) => {
+    return (
+        <TouchableOpacity
+            style={styles.appTileContainer}
+            activeOpacity={0.8}
+            onPress={props.onPress}
+        >
+            <View style={styles.appTileViewContainer}>
+                <Text style={styles.appTileText}>{props.title}</Text>
+                <Text style={styles.appTileText}>{props.description}</Text>
+                <Image source={props.getImage}></Image>
+            </View>
+        </TouchableOpacity>
+    );
+}
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -31,21 +47,4 @@ const styles = StyleSheet.create({
         padding: 20,
     }
 });
-
-const AppTile = (props) => (
-    <View style={styles.appTileContainer}>
-        <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={props.onPress}
-        >
-            <View style={styles.appTileViewContainer}>
-                <Text style={styles.appTileText}>{props.title}</Text>
-                <Text style={styles.appTileText}>{props.description}</Text>
-                <Image source={props.getImage}></Image>
-            </View>
-
-        </TouchableOpacity>
-    </View>
-);
-
 export default AppTile;

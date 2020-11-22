@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
-TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
+import BfButton from '../shared/componente/bf-button'
 
 export default function Acasa({ navigation }) {
   return (
@@ -9,17 +9,17 @@ export default function Acasa({ navigation }) {
 
       <Image source={require('../shared/static/logo.png')} />
 
-      <AppButton
+      <BfButton
         title="Autentificare"
         onPress={() => navigation.navigate("Autentificare")}
       />
 
-      <AppButton
+      <BfButton
         title="Înregistrare"
         onPress={() => navigation.navigate("Inregistrare")}
       />
 
-      <AppButton
+      <BfButton
         title="Abonamente"
         onPress={() => navigation.navigate("Abonamente")}
       />
@@ -34,27 +34,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  appButtonContainer: {
-    elevation: 8,
-    backgroundColor: "#ffc12e",
-    borderRadius: 10,
-    margin: 5,
-    padding: 10
-  },
-  appButtonText: {
-    fontSize: 18,
-    color: "#000",
-    fontWeight: "bold",
-    alignSelf: "center",
-  },
 });
 
-const AppButton = ({ onPress, title }) => (
-  <TouchableOpacity
-    activeOpacity={0.8}
-    onPress={onPress}
-    style={styles.appButtonContainer}
-  >
-    <Text style={styles.appButtonText}>{title}</Text>
-  </TouchableOpacity>
-);
+
