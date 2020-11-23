@@ -10,21 +10,24 @@ import {
 import SharedVariables from '../assets/shared-variables';
 
 
-
-const AppTile = (props) => {
-    return (
-        <TouchableOpacity
-            style={styles.appTileContainer}
-            activeOpacity={0.8}
-            onPress={props.onPress}
-        >
-            <View style={styles.appTileViewContainer}>
-                <Text style={styles.appTileText}>{props.title}</Text>
-                <Text style={styles.appTileText}>{props.description}</Text>
-                <Image source={props.getImage}></Image>
-            </View>
-        </TouchableOpacity>
-    );
+export default class AppTile extends React.Component {
+    render() {
+        return (
+            <TouchableOpacity
+                style={styles.appTileContainer}
+                activeOpacity={0.8}
+                onPress={this.props.onPress}
+            >
+                <View style={styles.appTileViewContainer}>
+                    <View style={styles.title}>
+                        <Text style={styles.appTileText}>{this.props.title}</Text>
+                    </View>
+                    <Text style={styles.appTileText}>{this.props.description}</Text>
+                    <Image source={this.props.getImage}></Image>
+                </View>
+            </TouchableOpacity>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -48,6 +51,8 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: 'center',
         padding: 20,
+    },
+    title: {
+        color: "grey"
     }
 });
-export default AppTile;

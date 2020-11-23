@@ -7,14 +7,12 @@ import {
     Alert
 } from 'react-native';
 
-import SharedStyles from '../shared/assets/shared-styles'
-import BfButton from '../shared/componente/bf-button'
+import SharedStyles from '../shared/assets/shared-styles';
+import BfButton from '../shared/componente/bf-button';
+
 
 export default class Detalii extends React.Component {
-    onPressButton() {
-        // TO DO
-        console.log('am apasat butonul cumpara.');
-    }
+
     // abonament = service.getAbonament(id);
     render() {
         return (
@@ -32,7 +30,7 @@ export default class Detalii extends React.Component {
 
                 <BfButton
                     title="Cumpără"
-                    onPress={this.onPressButton()}
+                    onPress={() => onPressButton()}
                 />
             </View>
         );
@@ -44,3 +42,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     }
 });
+
+function onPressButton() {
+    // TO DO
+    console.log('am apasat butonul cumpara.');
+}

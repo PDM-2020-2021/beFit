@@ -8,13 +8,24 @@ import BfTextInput from './bf-text-input';
 import BfButton from './bf-button';
 import BfLabeledButton from './bf-labeled-button';
 import SharedVariables from '../assets/shared-variables';
-import { render } from 'react-dom';
 
 
-export default class AuthForm extends React.Component {
+export default class RegForm extends React.Component {
     render() {
         return (
-            <View style={style.container} >
+            <View style={style.container}>
+                <BfTextInput
+                    placeholder="Nume"
+                    maxLength={20}
+                    image={require('../static/email.png')}
+                    custom_styles={style.input}
+                />
+                <BfTextInput
+                    placeholder="Prenume"
+                    maxLength={10}
+                    image={require('../static/email.png')}
+                    custom_styles={style.input}
+                />
                 <BfTextInput
                     placeholder="Email"
                     maxLength={20}
@@ -23,19 +34,19 @@ export default class AuthForm extends React.Component {
                 />
                 <BfTextInput
                     placeholder="Parola"
-                    secured = {true}
-                    maxLength={20}
+                    secured= {true}
+                    maxLength={10}
                     image={require('../static/email.png')}
                     custom_styles={style.input}
                 />
                 <BfButton
-                    title="Autentifică-te"
+                    title="Înregistrează-te"
                     custom_styles={style.button}
                 />
                 <BfLabeledButton
-                    title="Sau înregistrează-te"
+                    title="Sau autentifică-te"
                     custom_styles={style.labeled_button}
-                    onPress= {()=>this.props.navigation.navigate("Inregistrare")}
+                    onPress={() => this.props.navigation.navigate("Autentificare")}
                 />
 
             </View>
@@ -45,13 +56,13 @@ export default class AuthForm extends React.Component {
 
 const style = StyleSheet.create({
     container: {
-        justifyContent: 'center',
         padding: 30,
-        height: 300,
-        width: '80%',
+        paddingTop: 60,
+        width:'80%',
+        height: 400,
         backgroundColor: SharedVariables.bckgColor2,
         borderRadius: 5,
-        shadowColor: "#000",
+        shadowColor: SharedVariables.bckgColor,
         shadowOffset: {
             width: 3,
             height: 22,

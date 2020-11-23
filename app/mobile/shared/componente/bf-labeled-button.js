@@ -8,22 +8,28 @@ import {
 
 import SharedVariables from '../assets/shared-variables';
 
-
-const BfLabeledButton = (props) => {
-    return (
-        <TouchableOpacity
-            activeOpacity={0.2}
-            onPress={props.onPress}
-        >
-            <Text
-                style={styles.bf_label}
+export default class BfLabeledButton extends React.Component {
+    render() {
+        return (
+            <TouchableOpacity
+                activeOpacity={0.2}
+                onPress={this.props.onPress}
             >
-                {props.title}
-            </Text>
-        </TouchableOpacity>
-    );
+                <Text
+                    style=
+                    {
+                        [
+                            styles.bf_label,
+                            this.props.custom_styles
+                        ]
+                    }
+                >
+                    {this.props.title}
+                </Text>
+            </TouchableOpacity>
+        );
+    }
 }
-
 const styles = StyleSheet.create({
     bf_label: {
         fontFamily: 'Comic',
@@ -32,4 +38,3 @@ const styles = StyleSheet.create({
         color: SharedVariables.bckgColor,
     },
 });
-export default BfLabeledButton; 

@@ -12,27 +12,25 @@ import { ScrollView } from "react-native-gesture-handler";
 export default class Abonamente extends React.Component {
     render() {
         return (
-            <ScrollView style={SharedStyles.container.alignItems,
-                SharedStyles.container.justifyContent, SharedStyles.container.flex}>
-
+            <ScrollView style={SharedStyles.conscroll_containertainer}>
                 <AppTile
                     id={1}
                     title="Abonament 1"
-                    description="       Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    description="Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     getImage={require('../shared/static/sala_fitness.png')}
                 ></AppTile>
 
                 <AppTile
                     id={2}
                     title="Abonament 2"
-                    description="       Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    description="Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     getImage={require('../shared/static/sala_fitness.png')}
                 ></AppTile>
 
                 <AppTile
                     id={3}
                     title="Abonament 3"
-                    description="       Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    description="Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     getImage={require('../shared/static/sala_fitness.png')}
                 ></AppTile>
 
