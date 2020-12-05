@@ -8,7 +8,7 @@ const SharedStyles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: SharedVariables.bckgColor,
+      backgroundColor: "#f5f5f5",
     },
     container: {
       alignSelf: 'center',

@@ -7,39 +7,93 @@ import {
     Alert
 } from 'react-native';
 
-import SharedStyles from '../shared/assets/shared-styles';
 import BfButton from '../shared/componente/bf-button';
+import { ScrollView } from "react-native-gesture-handler";
 
 
 export default class Detalii extends React.Component {
-
-    // abonament = service.getAbonament(id);
     render() {
         return (
-            <View style={[SharedStyles.container, styles.container]}>
+            <ScrollView style={styles.detaliiContainer}>
 
-                <Text></Text>
-                <Text>Categorie: </Text>
-                <Text>Data adăugării: </Text>
-                <Text>Valabil până la: </Text>
-                <Text>Disponibil încă  zile.</Text>
+                <View style={styles.imageContainer}>
+                    <Image source={require('../shared/static/images/fitness.jpg')}
+                        style={styles.imgStyle}></Image>
+                </View>
 
-                <Image source={require('../shared/static/sala_fitness.png')}></Image>
+                <View style={styles.infoContainer}>
+                    <View>
+                        <Text style={styles.titleStyle}>{this.props.title}Titlu abonament</Text>
+                    </View>
 
-                <Text>Descriere: </Text>
+                    <View style={styles.categoryContainer}>
+                        <Text style={styles.textStyle}>Categorie: {this.props.category}</Text>
+                        <Text style={styles.textStyle}>Data adăugării: {this.props.addedDate} </Text>
+                        <Text style={styles.textStyle}>Ofertă valabilă până la: {this.props.expirationDate}</Text>
+                        <Text style={styles.textStyle}>Valabil {this.props.valability}d zile de la activare.</Text>
+                    </View>
 
-                <BfButton
-                    title="Cumpără"
-                    onPress={() => onPressButton()}
-                />
-            </View>
+                    <View style={styles.descriptionContainer}>
+                        <Text>{this.props.description}Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
+                    </View>
+                </View>
+
+                <View style={styles.btnContainer}>
+                    <BfButton
+                        custom_styles={styles.btnStyle}
+                        title="Cumpără"
+                        onPress={() => onPressButton()}
+                    />
+                </View>
+
+            </ScrollView>
+
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        justifyContent: "space-between",
+    detaliiContainer: {
+        backgroundColor: "#f5f5f5",
+        width: "100%",
+        height: "100%",
+    },
+    infoContainer: {
+        height: 250,
+        marginTop: 20,
+    },
+    categoryContainer: {
+        marginLeft: 10,
+        marginBottom: 10
+    },
+    textStyle: {
+        fontSize: 17
+    },
+    titleStyle: {
+        fontSize: 20,
+        textAlign: "center",
+        marginBottom: 15
+    },
+    imageContainer: {
+        width: "100%",
+        height: 300
+    },
+    imgStyle: {
+        width: "100%",
+        height: "100%"
+    },
+    descriptionContainer: {
+        marginLeft: 10,
+        marginRight: 10,
+    },
+    btnStyle: {
+        width: "40%",
+        height: "50%",
+    },
+    btnContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+        height: 100
     }
 });
 

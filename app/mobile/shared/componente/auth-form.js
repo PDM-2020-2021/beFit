@@ -8,7 +8,6 @@ import BfTextInput from './bf-text-input';
 import BfButton from './bf-button';
 import BfLabeledButton from './bf-labeled-button';
 import SharedVariables from '../assets/shared-variables';
-import { render } from 'react-dom';
 
 
 export default class AuthForm extends React.Component {
@@ -17,15 +16,15 @@ export default class AuthForm extends React.Component {
             <View style={style.container} >
                 <BfTextInput
                     placeholder="Email"
-                    maxLength={20}
-                    image={require('../static/email.png')}
+                    maxLength={30}
+                    image={require('../static/icons/email.png')}
                     custom_styles={style.input}
                 />
                 <BfTextInput
                     placeholder="Parola"
                     secured = {true}
-                    maxLength={20}
-                    image={require('../static/email.png')}
+                    maxLength={15}
+                    image={require('../static/icons/password.png')}
                     custom_styles={style.input}
                 />
                 <BfButton

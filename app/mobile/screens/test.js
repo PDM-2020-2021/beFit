@@ -1,21 +1,27 @@
 import React from 'react';
 import {
     View,
-    Image,
-    ActivityIndicator,
-    StatusBar,
-    Text
+    Text,
+    StyleSheet,
 } from 'react-native';
 
-import SharedStyles from '../shared/assets/shared-styles'
+import { ScrollView } from 'react-native-gesture-handler';
+import SharedVariables from '../shared/assets/shared-variables'
+import BfLabeledButton from '../shared/componente/bf-labeled-button';
 
 export default class Test extends React.Component {
 
     render() {
         return (
-            <View style ={SharedStyles.container}> 
-                    <Text>Pagina de teste</Text>
-            </View>
+            <ScrollView>
+
+                
+
+            </ScrollView>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    
+});
