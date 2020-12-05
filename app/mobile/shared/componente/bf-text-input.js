@@ -12,11 +12,7 @@ import SharedVariables from '../assets/shared-variables';
 export default class BfTextInput extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleChange(event) {
-        this.setState({ value: event.target.value });
+        this.state = { text: '' };
     }
     render() {
         return (
@@ -38,9 +34,11 @@ export default class BfTextInput extends React.Component {
                     maxLength={this.props.maxLength}
                     placeholder={this.props.placeholder}
                     placeholderTextColor={SharedVariables.bckgColor}
-                    onChange={this.handleChange}
-                    value={this.state.value}
-                    secureTextEntry= {this.props.secured}
+                    secureTextEntry={this.props.secured}
+                    
+                    value={this.props.value}
+                    onChangeText = {this.props.onChangeText}
+
                     style=
                     {
                         [
