@@ -8,6 +8,7 @@ import BfTextInput from './bf-text-input';
 import BfButton from './bf-button';
 import BfLabeledButton from './bf-labeled-button';
 import SharedVariables from '../assets/shared-variables';
+
 import UserAuthModel from '../logic/models/user-auth-model';
 import * as api from '../logic/api-requester'
 
@@ -44,8 +45,8 @@ export default class AuthForm extends React.Component {
             <View style={style.container} >
                 <BfTextInput
                     placeholder="Email"
-                    maxLength={20}
-                    image={require('../static/email.png')}
+                    maxLength={30}
+                    image={require('../static/icons/email.png')}
                     custom_styles={style.input}
 
                     value={this.state.email}
@@ -53,9 +54,9 @@ export default class AuthForm extends React.Component {
                 />
                 <BfTextInput
                     placeholder="Parola"
-                    secured={true}
-                    maxLength={20}
-                    image={require('../static/email.png')}
+                    secured = {true}
+                    maxLength={15}
+                    image={require('../static/icons/password.png')}
                     custom_styles={style.input}
 
                     value={this.state.password}

@@ -7,7 +7,6 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
 import * as Font from 'expo-font';
 import BfLabeledButton from '../shared/componente/bf-labeled-button';
 import SharedStyles from '../shared/assets/shared-styles';
@@ -33,7 +32,7 @@ export default class Acasa extends React.Component {
       return (
         <View style={SharedStyles.home_container}>
 
-          <Image source={require('../shared/static/logo.png')} />
+          <Image source={require('../shared/static/logo/logo.png')} />
 
           <BfLabeledButton
             title="Autentificare"
@@ -52,9 +51,10 @@ export default class Acasa extends React.Component {
             onPress={() => this.props.navigation.navigate("Abonamente")}
             custom_styles={styles.labeled_button}
           />
+
           <BfLabeledButton
-            title="Detalii"
-            onPress={() => this.props.navigation.navigate("Detalii")}
+            title="Profil"
+            onPress={() => this.props.navigation.navigate("Profil")}
             custom_styles={styles.labeled_button}
           />
 
@@ -80,6 +80,6 @@ export default class Acasa extends React.Component {
 const styles = StyleSheet.create({
   labeled_button: {
     color: "#000",
-    margin:6 
+    margin: 6
   }
 })

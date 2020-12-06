@@ -16,27 +16,33 @@ export default class RegForm extends React.Component {
             <View style={style.container}>
                 <BfTextInput
                     placeholder="Nume"
-                    maxLength={20}
-                    image={require('../static/email.png')}
+                    maxLength={15}
+                    image={require('../static/icons/hooman.png')}
                     custom_styles={style.input}
                 />
                 <BfTextInput
                     placeholder="Prenume"
-                    maxLength={10}
-                    image={require('../static/email.png')}
+                    maxLength={20}
+                    image={require('../static/icons/hooman.png')}
                     custom_styles={style.input}
                 />
                 <BfTextInput
                     placeholder="Email"
-                    maxLength={20}
-                    image={require('../static/email.png')}
+                    maxLength={30}
+                    image={require('../static/icons/email.png')}
+                    custom_styles={style.input}
+                />
+                <BfTextInput
+                    placeholder="Telefon"
+                    maxLength={10}
+                    image={require('../static/icons/phone.png')}
                     custom_styles={style.input}
                 />
                 <BfTextInput
                     placeholder="Parola"
                     secured= {true}
-                    maxLength={10}
-                    image={require('../static/email.png')}
+                    maxLength={15}
+                    image={require('../static/icons/password.png')}
                     custom_styles={style.input}
                 />
                 <BfButton

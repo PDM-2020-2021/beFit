@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
         fontFamily: "Comic",
         color: SharedVariables.bckgColor,
         fontWeight: "bold",
-        alignSelf: "center",
+        width: "100%",
+        textAlign: "center",
     },
 });
