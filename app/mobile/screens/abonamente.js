@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 export default class Abonamente extends React.Component {
     render() {
         return (
-            <ScrollView style={[SharedStyles.scroll_container, styles.imgResizer]}>
+            <ScrollView style={SharedStyles.scroll_container}>
                 <AppTile
                     navigation={this.props.navigation}
                     id={1}
