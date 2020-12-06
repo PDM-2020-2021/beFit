@@ -2,37 +2,84 @@ import React from 'react';
 import {
   View,
   Image,
+  ActivityIndicator,
+  StatusBar,
+  StyleSheet
 } from 'react-native';
 
-import BfButton from '../shared/componente/bf-button'
-import SharedStyles from '../shared/shared-styles'
+import * as Font from 'expo-font';
+import BfLabeledButton from '../shared/componente/bf-labeled-button';
+import SharedStyles from '../shared/assets/shared-styles';
 
 
-export default function Acasa({ navigation }) {
-  return (
-    <View style={SharedStyles.container}>
+export default class Acasa extends React.Component {
+  state = {
+    assetsLoaded: false,
+  }
 
-      <Image source={require('../shared/static/logo.png')} />
+  async loadAssets() {
+    if (!this.state.assetsLoaded) {
+      await Font.loadAsync(
+        { Comic: require('../shared/assets/fonts/Comic.ttf') }
+      );
+      this.setState({ assetsLoaded: true });
+    }
+  }
 
-      <BfButton
-        title="Autentificare"
-        onPress={() => navigation.navigate("Autentificare")}
-      />
+  render() {
+    this.loadAssets();
+    if (this.state.assetsLoaded) {
+      return (
+        <View style={SharedStyles.home_container}>
 
-      <BfButton
-        title="Înregistrare"
-        onPress={() => navigation.navigate("Inregistrare")}
-      />
+          <Image source={require('../shared/static/logo/logo.png')} />
 
-      <BfButton
-        title="Abonamente"
-        onPress={() => navigation.navigate("Abonamente")}
-      />
+          <BfLabeledButton
+            title="Autentificare"
+            onPress={() => this.props.navigation.navigate("Autentificare")}
+            custom_styles={styles.labeled_button}
+          />
 
-    </View>
-  );
+          <BfLabeledButton
+            title="Înregistrare"
+            onPress={() => this.props.navigation.navigate("Inregistrare")}
+            custom_styles={styles.labeled_button}
+          />
+
+          <BfLabeledButton
+            title="Abonamente"
+            onPress={() => this.props.navigation.navigate("Abonamente")}
+            custom_styles={styles.labeled_button}
+          />
+
+          <BfLabeledButton
+            title="Profil"
+            onPress={() => this.props.navigation.navigate("Profil")}
+            custom_styles={styles.labeled_button}
+          />
+
+          <BfLabeledButton
+            title="Teste"
+            onPress={() => this.props.navigation.navigate("Test")}
+            custom_styles={styles.labeled_button}
+          />
+
+        </View>
+      );
+    }
+    else {
+      return (
+        <View style={SharedStyles.container}>
+          <ActivityIndicator />
+          <StatusBar barStyle="default" />
+        </View>
+      );
+    }
+  }
 }
-
-
-
-
+const styles = StyleSheet.create({
+  labeled_button: {
+    color: "#000",
+    margin: 6
+  }
+})

@@ -4,14 +4,17 @@ import {
     View,
 } from 'react-native';
 
-import SharedStyles from '../shared/shared-styles'
+import AuthForm from '../shared/componente/auth-form';
+import SharedStyles from '../shared/assets/shared-styles'
 
 
-export default function Autentificare({ navigation }) {
-    return (
-        <View style={SharedStyles.container}>
-            <Text>Autentificare</Text>
-        </View>
-    );
+export default class Autentificare extends React.Component {
+    render(){
+        return (
+            <View style={[SharedStyles.home_container, {backgroundColor:"#ffc12e"}]}>
+                <AuthForm navigation = {this.props.navigation}/>
+            </View>
+        );
+    }
 }
 
