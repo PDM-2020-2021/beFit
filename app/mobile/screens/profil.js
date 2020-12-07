@@ -9,24 +9,47 @@ import { ScrollView } from 'react-native-gesture-handler';
 import SharedVariables from '../shared/assets/shared-variables'
 import BfLabeledButton from '../shared/componente/bf-labeled-button';
 
-export default class Test extends React.Component {
+export default class Profil extends React.Component {
 
-    tableSchema = {
-        tableHead: ['Nume abonament', 'Valabilitate'],
-        tableData: [
-            ['Abonament spa', '23'],
-            ['Abonament fitness', '17'],
-            ['Abonament cardio', '30'],
-            ['Abonament golf', '19'],
-            ['Abonament înot', '26'],
-            ['Abonament spa', '23'],
-            ['Abonament fitness', '17'],
-            ['Abonament cardio', '30'],
+    constructor(props) {
+        super(props);
+    }
 
-        ]
+    tableData = [
+        {id: 1, nume: 'Abonament spa', valab: 17},
+        {id: 2, nume: 'Abonament fitness', valab: 18},
+        {id: 3, nume: 'Abonament cardio', valab: 19},
+        {id: 4, nume: 'Abonament golf', valab: 20},
+    ];
+
+    renderRow(val1, val2, id) {
+        return (
+            <View key={id} style={{ flex: 1, alignSelf: 'stretch', flexDirection: 'row' }}>
+                <View style={{ flex: 1, alignSelf: 'stretch' }}>
+                    <Text>{val1}</Text>
+                </View>
+                <View style={{ flex: 1, alignSelf: 'stretch' }} >
+                    <Text>{val2}</Text>
+                </View>
+            </View>
+        );
+    }
+
+    renderHead(val1, val2) {
+        return (
+            <View style={{ flex: 1, alignSelf: 'stretch', flexDirection: 'row' }}>
+                <View style={{ flex: 1, alignSelf: 'stretch' }}>
+                    <Text>{val1}</Text>
+                </View>
+                <View style={{ flex: 1, alignSelf: 'stretch' }} >
+                    <Text>{val2}</Text>
+                </View>
+            </View>
+        );
     }
 
     render() {
+        let ourTableColumns = [];
         return (
             <ScrollView style={styles.profilContainer}>
 
@@ -44,7 +67,19 @@ export default class Test extends React.Component {
 
                 <Text style={styles.bigTextStyle}>Abonamentele tale:</Text>
 
-                
+                <View>
+                    {this.renderHead("Nume abonament", "Valabilitate")}
+                </View>
+
+                {
+                    this.tableData.forEach(elem =>
+                        ourTableColumns.push(this.renderRow(elem.nume, elem.valab, elem.id))
+                    )
+                }
+
+                <View>
+                    {ourTableColumns}
+                </View>
 
             </ScrollView>
         );
