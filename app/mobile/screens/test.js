@@ -15,7 +15,7 @@ export default class Test extends React.Component {
         return (
             <ScrollView>
 
-                
+                <Text>test works</Text>
 
             </ScrollView>
         );

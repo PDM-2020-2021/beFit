@@ -9,7 +9,7 @@ import Abonamente from './screens/abonamente';
 import Detalii from './screens/detalii';
 import Test from './screens/test';
 import Profil from './screens/profil';
-
+import ActualizareProfil from './screens/profil-actualizare';
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -23,6 +23,7 @@ const AuthStack = () => (
     <Screen name="Detalii" component={Detalii} />
     <Screen name="Test" component={Test} />
     <Screen name="Profil" component={Profil}></Screen>
+    <Screen name="ActualizareProfil" component={ActualizareProfil}></Screen>
   </Navigator>
 );
 

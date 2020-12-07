@@ -4,14 +4,32 @@ import {
     StyleSheet,
     Text,
     Image,
-    Alert
+    Modal,
+    TouchableOpacity,
 } from 'react-native';
 
 import BfButton from '../shared/componente/bf-button';
 import { ScrollView } from "react-native-gesture-handler";
-
+import SharedVariables from "../shared/assets/shared-variables";
 
 export default class Detalii extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { modalVisible: false };
+    }
+
+    yesPressed() {
+        this.setState({ modalVisible: false });
+    }
+
+    noPressed() {
+        this.setState({ modalVisible: false });
+    }
+
+    onPressButton() {
+        this.setState({ modalVisible: true });
+    }
+
     render() {
         return (
             <ScrollView style={styles.detaliiContainer}>
@@ -42,8 +60,41 @@ export default class Detalii extends React.Component {
                     <BfButton
                         custom_styles={styles.btnStyle}
                         title="Cumpără"
-                        onPress={() => onPressButton()}
+                        onPress={() => this.onPressButton()}
                     />
+                </View>
+
+                <View>
+                    <Modal isVisible={this.state.modalVisible}
+                        animationType="fade"
+                        transparent={true}
+                        visible={this.state.modalVisible}
+                        onRequestClose={() => {
+                            this.setState({ modalVisible: false });
+                        }}
+                    >
+                        <View style={styles.modalView}>
+                            <Image source={require('../shared/static/icons/Checkbox.png')}
+                                style={styles.bifaStyle}></Image>
+                            <Text style={styles.questionStyle}>
+                                Ești sigur că vrei să activezi acest abonament?
+                            </Text>
+                            <View>
+                                <TouchableOpacity
+                                    onpress={() => this.yesPressed()}
+                                    activeOpacity={0.8}>
+                                    <Image source={require('../shared/static/icons/yes.png')}
+                                        style={styles.yesStyle}></Image>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => this.noPressed()}
+                                    activeOpacity={0.8}>
+                                    <Image source={require('../shared/static/icons/no.png')}
+                                        style={styles.noStyle}></Image>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </Modal>
                 </View>
 
             </ScrollView>
@@ -53,6 +104,32 @@ export default class Detalii extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    yesStyle: {
+        position: "absolute",
+        right: 20,
+    },
+    noStyle: {
+        position: "absolute",
+        left: 20,
+    },
+    bifaStyle: {
+        marginBottom: 50,
+    },
+    questionStyle: {
+        color: SharedVariables.bckgColor,
+        fontSize: 20,
+        textAlign: "center",
+        fontWeight: "bold",
+        marginBottom: 20,
+    },
+    modalView: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#f5f5f5",
+        alignItems: "center",
+        justifyContent: "center",
+        alignItems: "center",
+    },
     detaliiContainer: {
         backgroundColor: "#f5f5f5",
         width: "100%",
@@ -96,8 +173,3 @@ const styles = StyleSheet.create({
         height: 100
     }
 });
-
-function onPressButton() {
-    // TO DO
-    console.log('am apasat butonul cumpara.');
-}

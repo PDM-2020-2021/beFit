@@ -8,7 +8,6 @@ import {
 import { ScrollView } from 'react-native-gesture-handler';
 import SharedVariables from '../shared/assets/shared-variables'
 import BfLabeledButton from '../shared/componente/bf-labeled-button';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
 export default class Test extends React.Component {
 
@@ -23,7 +22,7 @@ export default class Test extends React.Component {
             ['Abonament spa', '23'],
             ['Abonament fitness', '17'],
             ['Abonament cardio', '30'],
-            
+
         ]
     }
 
@@ -37,16 +36,15 @@ export default class Test extends React.Component {
                     <Text style={styles.textStyle}>Prenume: prenume_utilizator</Text>
                     <Text style={styles.textStyle}>Email: email_utilizator</Text>
 
-                    <BfLabeledButton title="Actualizare profil"></BfLabeledButton>
+                    <BfLabeledButton
+                        title="Actualizare profil"
+                        onPress={() => this.props.navigation.navigate("ActualizareProfil")}
+                    ></BfLabeledButton>
                 </View>
 
                 <Text style={styles.bigTextStyle}>Abonamentele tale:</Text>
-                <View style={styles.tableContainer}>
-                    <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-                        <Row data={this.tableSchema.tableHead} style={styles.head} textStyle={styles.text} />
-                        <Rows data={this.tableSchema.tableData} textStyle={styles.text} />
-                    </Table>
-                </View>
+
+                
 
             </ScrollView>
         );
@@ -80,17 +78,4 @@ const styles = StyleSheet.create({
         marginTop: 50,
         marginLeft: 20,
     },
-    tableContainer: {
-        marginLeft: 20,
-        marginRight: 20,
-        backgroundColor: '#fff'
-    },
-    head: {
-        height: 50,
-        backgroundColor: SharedVariables.darkOrange,
-    },
-    text: {
-        textAlign: "center",
-        padding: 10
-    }
 });
