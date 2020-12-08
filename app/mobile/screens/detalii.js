@@ -4,11 +4,10 @@ import {
     StyleSheet,
     Text,
     Image,
-    Modal,
-    TouchableOpacity,
 } from 'react-native';
 
 import BfButton from '../shared/componente/bf-button';
+import BfModal from '../shared/componente/bf-modal';
 import { ScrollView } from "react-native-gesture-handler";
 import SharedVariables from "../shared/assets/shared-variables";
 
@@ -18,18 +17,21 @@ export default class Detalii extends React.Component {
         this.state = { modalVisible: false };
     }
 
-    yesPressed() {
-        this.setState({ modalVisible: false });
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
     }
-
-    noPressed() {
-        this.setState({ modalVisible: false });
+    modalYesPressed() {
+        console.log('YES PRESSED');
+        this.setModalVisible(false);
     }
-
-    onPressButton() {
-        this.setState({ modalVisible: true });
+    modalNoPressed() {
+        console.log('NO PRESSED');
+        this.setModalVisible(false);
     }
-
+    modalDismiss() {
+        console.log('Dismissed');
+        this.setModalVisible(false);
+    }
     render() {
         return (
             <ScrollView style={styles.detaliiContainer}>
@@ -60,42 +62,17 @@ export default class Detalii extends React.Component {
                     <BfButton
                         custom_styles={styles.btnStyle}
                         title="Cumpără"
-                        onPress={() => this.onPressButton()}
+                        onPress={() => this.setModalVisible(true)}
                     />
                 </View>
 
-                <View>
-                    <Modal isVisible={this.state.modalVisible}
-                        animationType="fade"
-                        transparent={true}
-                        visible={this.state.modalVisible}
-                        onRequestClose={() => {
-                            this.setState({ modalVisible: false });
-                        }}
-                    >
-                        <View style={styles.modalView}>
-                            <Image source={require('../shared/static/icons/Checkbox.png')}
-                                style={styles.bifaStyle}></Image>
-                            <Text style={styles.questionStyle}>
-                                Ești sigur că vrei să activezi acest abonament?
-                            </Text>
-                            <View>
-                                <TouchableOpacity
-                                    onpress={() => this.yesPressed()}
-                                    activeOpacity={0.8}>
-                                    <Image source={require('../shared/static/icons/yes.png')}
-                                        style={styles.yesStyle}></Image>
-                                </TouchableOpacity>
-                                <TouchableOpacity
-                                    onPress={() => this.noPressed()}
-                                    activeOpacity={0.8}>
-                                    <Image source={require('../shared/static/icons/no.png')}
-                                        style={styles.noStyle}></Image>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                    </Modal>
-                </View>
+                <BfModal
+                    modalVisible={this.state.modalVisible}
+                    onYes={this.modalYesPressed.bind(this)}
+                    onNo={this.modalNoPressed.bind(this)}
+                    onRequestClose={this.modalDismiss.bind(this)}
+                    modalText={"Ești sigur că vrei să activezi acest abonament?"}>
+                </BfModal>
 
             </ScrollView>
 

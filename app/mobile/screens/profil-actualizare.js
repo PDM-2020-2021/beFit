@@ -3,15 +3,13 @@ import {
     View,
     StyleSheet,
     Text,
-    Image,
-    Modal,
-    TouchableOpacity,
 } from 'react-native';
 
 import { ScrollView } from 'react-native-gesture-handler';
 import SharedVariables from '../shared/assets/shared-variables'
 import BfButton from '../shared/componente/bf-button';
-import BfTextInput from '../shared/componente/bf-text-input'
+import BfTextInput from '../shared/componente/bf-text-input';
+import BfModal from '../shared/componente/bf-modal';
 
 export default class ActualizareProfil extends React.Component {
     constructor(props) {
@@ -19,18 +17,21 @@ export default class ActualizareProfil extends React.Component {
         this.state = { modalVisible: false };
     }
 
-    yesPressed() {
-        this.setState({ modalVisible: false });
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
     }
-
-    noPressed() {
-        this.setState({ modalVisible: false });
+    modalYesPressed() {
+        console.log('YES PRESSED');
+        this.setModalVisible(false);
     }
-
-    onPressButton() {
-        this.setState({ modalVisible: true });
+    modalNoPressed() {
+        console.log('NO PRESSED');
+        this.setModalVisible(false);
     }
-
+    modalDismiss() {
+        console.log('Dismissed');
+        this.setModalVisible(false);
+    }
     render() {
         return (
             <ScrollView style={styles.bigContainer}>
@@ -85,40 +86,15 @@ export default class ActualizareProfil extends React.Component {
                     <BfButton
                         title="Actualizare"
                         custom_styles={styles.button}
-                        onPress={() => this.onPressButton()}
+                        onPress={() => this.setModalVisible()}
                     />
-                    <View>
-                        <Modal isVisible={this.state.modalVisible}
-                            animationType="fade"
-                            transparent={true}
-                            visible={this.state.modalVisible}
-                            onRequestClose={() => {
-                                this.setState({ modalVisible: false });
-                            }}
-                        >
-                            <View style={styles.modalView}>
-                                <Image source={require('../shared/static/icons/Checkbox.png')}
-                                    style={styles.bifaStyle}></Image>
-                                <Text style={styles.questionStyle}>
-                                    Salvezi modificările făcute?
-                            </Text>
-                                <View>
-                                    <TouchableOpacity
-                                        onpress={() => this.yesPressed()}
-                                        activeOpacity={0.8}>
-                                        <Image source={require('../shared/static/icons/yes.png')}
-                                            style={styles.yesStyle}></Image>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity
-                                        onPress={() => this.noPressed()}
-                                        activeOpacity={0.8}>
-                                        <Image source={require('../shared/static/icons/no.png')}
-                                            style={styles.noStyle}></Image>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                        </Modal>
-                    </View>
+                    <BfModal
+                        modalVisible={this.state.modalVisible}
+                        onYes={this.modalYesPressed.bind(this)}
+                        onNo={this.modalNoPressed.bind(this)}
+                        onRequestClose={this.modalDismiss.bind(this)}
+                        modalText={"Salvezi modificările făcute?"}>
+                    </BfModal>
 
                 </View>
 
@@ -128,6 +104,22 @@ export default class ActualizareProfil extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    modalView: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#d5d5d5",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    modalContainer: {
+        padding: 30,
+        width: "80%",
+        height: "50%",
+        borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: '#ffffff',
+    },
     questionStyle: {
         color: SharedVariables.bckgColor,
         fontSize: 20,
@@ -136,24 +128,13 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         fontFamily: "Comic",
     },
-    yesStyle: {
-        position: "absolute",
-        right: 20,
-    },
-    noStyle: {
-        position: "absolute",
-        left: 20,
-    },
     bifaStyle: {
         marginBottom: 50,
     },
-    modalView: {
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#f5f5f5",
-        alignItems: "center",
-        justifyContent: "center",
-        alignItems: "center",
+    modalBtn: {
+        margin: 10,
+        width: 56,
+        height: 56
     },
     bigContainer: {
         width: "100%",
