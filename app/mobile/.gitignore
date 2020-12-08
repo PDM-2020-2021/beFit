@@ -32,7 +32,18 @@ local.properties
 
 # node.js
 #
-node_modules/
+node_modules/*
+!node_modules/metro
+
+node_modules/metro/*
+!node_modules/metro/src
+
+node_modules/metro/src/*
+!node_modules/metro/src/integration_tests
+
+node_modules/metro/src/integration_tests/*
+!node_modules/metro/src/integration_tests/metro.*
+
 npm-debug.log
 yarn-error.log
 
