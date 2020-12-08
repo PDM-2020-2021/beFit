@@ -52,7 +52,7 @@ export default class Detalii extends React.Component {
                     </View>
 
                     <View style={styles.descriptionContainer}>
-                        <Text>{this.props.description}Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
+                        <Text style={styles.descriptionText}>{this.props.description}Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
                     </View>
                 </View>
 
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontWeight: "bold",
         marginBottom: 20,
+        fontFamily: "Comic",
     },
     modalView: {
         width: "100%",
@@ -144,12 +145,14 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     textStyle: {
-        fontSize: 17
+        fontSize: 17,
+        fontFamily: "Comic",
     },
     titleStyle: {
         fontSize: 20,
         textAlign: "center",
-        marginBottom: 15
+        marginBottom: 15,
+        fontFamily: "Comic",
     },
     imageContainer: {
         width: "100%",
@@ -171,5 +174,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         height: 100
+    },
+    descriptionText: {
+        fontFamily: "Comic",
     }
 });

@@ -22,6 +22,9 @@ const SharedStyles = StyleSheet.create({
       width: '100%',
       flex: 1,
     },
+    comicStyle: {
+      fontFamily: "Comic"
+    }
 });
 
 export default SharedStyles

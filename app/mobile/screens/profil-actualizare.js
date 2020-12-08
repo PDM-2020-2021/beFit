@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontWeight: "bold",
         marginBottom: 20,
+        fontFamily: "Comic",
     },
     yesStyle: {
         position: "absolute",
@@ -166,6 +167,7 @@ const styles = StyleSheet.create({
         fontSize: 50,
         marginTop: 50,
         color: SharedVariables.bckgColor,
+        fontFamily: "Comic",
     },
     bigTextStyle: {
         color: SharedVariables.darkOrange,
@@ -174,6 +176,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         fontSize: 25,
         textAlign: "center",
+        fontFamily: "Comic",
     },
     formContainer: {
         padding: 30,
