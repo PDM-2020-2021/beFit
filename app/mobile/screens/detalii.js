@@ -4,14 +4,34 @@ import {
     StyleSheet,
     Text,
     Image,
-    Alert
 } from 'react-native';
 
 import BfButton from '../shared/componente/bf-button';
+import BfModal from '../shared/componente/bf-modal';
 import { ScrollView } from "react-native-gesture-handler";
-
+import SharedVariables from "../shared/assets/shared-variables";
 
 export default class Detalii extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { modalVisible: false };
+    }
+
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
+    }
+    modalYesPressed() {
+        console.log('YES PRESSED');
+        this.setModalVisible(false);
+    }
+    modalNoPressed() {
+        console.log('NO PRESSED');
+        this.setModalVisible(false);
+    }
+    modalDismiss() {
+        console.log('Dismissed');
+        this.setModalVisible(false);
+    }
     render() {
         return (
             <ScrollView style={styles.detaliiContainer}>
@@ -34,7 +54,7 @@ export default class Detalii extends React.Component {
                     </View>
 
                     <View style={styles.descriptionContainer}>
-                        <Text>{this.props.description}Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
+                        <Text style={styles.descriptionText}>{this.props.description}Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
                     </View>
                 </View>
 
@@ -42,9 +62,17 @@ export default class Detalii extends React.Component {
                     <BfButton
                         custom_styles={styles.btnStyle}
                         title="Cumpără"
-                        onPress={() => onPressButton()}
+                        onPress={() => this.setModalVisible(true)}
                     />
                 </View>
+
+                <BfModal
+                    modalVisible={this.state.modalVisible}
+                    onYes={this.modalYesPressed.bind(this)}
+                    onNo={this.modalNoPressed.bind(this)}
+                    onRequestClose={this.modalDismiss.bind(this)}
+                    modalText={"Ești sigur că vrei să activezi acest abonament?"}>
+                </BfModal>
 
             </ScrollView>
 
@@ -53,6 +81,33 @@ export default class Detalii extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    yesStyle: {
+        position: "absolute",
+        right: 20,
+    },
+    noStyle: {
+        position: "absolute",
+        left: 20,
+    },
+    bifaStyle: {
+        marginBottom: 50,
+    },
+    questionStyle: {
+        color: SharedVariables.bckgColor,
+        fontSize: 20,
+        textAlign: "center",
+        fontWeight: "bold",
+        marginBottom: 20,
+        fontFamily: "Comic",
+    },
+    modalView: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#f5f5f5",
+        alignItems: "center",
+        justifyContent: "center",
+        alignItems: "center",
+    },
     detaliiContainer: {
         backgroundColor: "#f5f5f5",
         width: "100%",
@@ -67,12 +122,14 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     textStyle: {
-        fontSize: 17
+        fontSize: 17,
+        fontFamily: "Comic",
     },
     titleStyle: {
         fontSize: 20,
         textAlign: "center",
-        marginBottom: 15
+        marginBottom: 15,
+        fontFamily: "Comic",
     },
     imageContainer: {
         width: "100%",
@@ -94,10 +151,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         height: 100
+    },
+    descriptionText: {
+        fontFamily: "Comic",
     }
 });
-
-function onPressButton() {
-    // TO DO
-    console.log('am apasat butonul cumpara.');
-}

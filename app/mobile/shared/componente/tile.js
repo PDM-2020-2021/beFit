@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     title: {
         marginBottom: "5%",
         fontWeight: "bold",
-        fontSize: 15
+        fontSize: 15,
     },
     abInfoStyle: {
         width: "100%",

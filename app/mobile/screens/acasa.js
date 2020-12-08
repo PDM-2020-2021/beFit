@@ -30,7 +30,7 @@ export default class Acasa extends React.Component {
     this.loadAssets();
     if (this.state.assetsLoaded) {
       return (
-        <View style={SharedStyles.home_container}>
+        <View style={[SharedStyles.home_container, SharedStyles.comicStyle]}>
 
           <Image source={require('../shared/static/logo/logo.png')} />
 
@@ -77,6 +77,7 @@ export default class Acasa extends React.Component {
     }
   }
 }
+
 const styles = StyleSheet.create({
   labeled_button: {
     color: "#000",

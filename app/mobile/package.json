@@ -10,7 +10,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-screens": "^2.10.1",
-    "react-native-table-component": "^1.2.1",
+    "react-native-swipe-gestures": "^1.0.5",
     "react-native-web": "0.13.13"
   },
   "devDependencies": {

@@ -47,7 +47,6 @@ export default class AuthForm extends React.Component {
                     placeholder="Email"
                     maxLength={30}
                     image={require('../static/icons/email.png')}
-                    custom_styles={style.input}
 
                     value={this.state.email}
                     onChangeText={text => this.setState({ email: text })}
@@ -57,7 +56,7 @@ export default class AuthForm extends React.Component {
                     secured = {true}
                     maxLength={15}
                     image={require('../static/icons/password.png')}
-                    custom_styles={style.input}
+                    custom_styles = {{ fontFamily: "Comic" }}
 
                     value={this.state.password}
                     onChangeText={text => this.setState({ password: text })}
