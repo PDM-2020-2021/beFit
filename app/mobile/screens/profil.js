@@ -6,8 +6,10 @@ import {
 } from 'react-native';
 
 import { ScrollView } from 'react-native-gesture-handler';
+
 import SharedVariables from '../shared/assets/shared-variables'
 import BfLabeledButton from '../shared/componente/bf-labeled-button';
+import BfDrawer from '../shared/componente/bf-drawer';
 
 export default class Profil extends React.Component {
 
@@ -31,9 +33,9 @@ export default class Profil extends React.Component {
             <View key={id} style={styles.rowBorderStyle}>
                 <View style={{ flex: 1, alignSelf: 'stretch' }}>
                     <BfLabeledButton
-                        custom_styles = {styles.rowText1Style}
+                        custom_styles={styles.rowText1Style}
                         title={val1}
-                        onPress = { () => this.props.navigation.navigate("Detalii") }
+                        onPress={() => this.props.navigation.navigate("Detalii")}
                     />
                 </View>
                 <View style={{ flex: 1, alignSelf: 'stretch' }} >
@@ -59,41 +61,45 @@ export default class Profil extends React.Component {
     render() {
         let ourTableColumns = [];
         return (
-            <ScrollView style={styles.profilContainer}>
+            <BfDrawer navigation={this.props.navigation}
+                content={(
+                    <ScrollView style={styles.profilContainer}>
 
-                <View style={styles.userInfoContainer}>
-                    <Text style={styles.titleStyle}>Date utilizator</Text>
-                    <Text style={styles.textStyle}>Nume: nume_utilizator</Text>
-                    <Text style={styles.textStyle}>Prenume: prenume_utilizator</Text>
-                    <Text style={styles.textStyle}>Email: email_utilizator</Text>
+                        <View style={styles.userInfoContainer}>
+                            <Text style={styles.titleStyle}>Date utilizator</Text>
+                            <Text style={styles.textStyle}>Nume: nume_utilizator</Text>
+                            <Text style={styles.textStyle}>Prenume: prenume_utilizator</Text>
+                            <Text style={styles.textStyle}>Email: email_utilizator</Text>
 
-                    <View style={styles.updateProfilStyle}>
-                        <BfLabeledButton
-                            title="Actualizare profil"
-                            onPress={() => this.props.navigation.navigate("ActualizareProfil")}
-                            custom_styles = { { color: SharedVariables.darkOrange } }
-                        ></BfLabeledButton>
-                    </View>
+                            <View style={styles.updateProfilStyle}>
+                                <BfLabeledButton
+                                    title="Actualizare profil"
+                                    onPress={() => this.props.navigation.navigate("ActualizareProfil")}
+                                    custom_styles={{ color: SharedVariables.darkOrange }}
+                                ></BfLabeledButton>
+                            </View>
 
-                </View>
+                        </View>
 
-                <Text style={styles.bigTextStyle}>Abonamentele tale:</Text>
+                        <Text style={styles.bigTextStyle}>Abonamentele tale:</Text>
 
-                <View style={styles.headerStyle}>
-                    {this.renderHead("Nume abonament", "Valabilitate")}
-                </View>
+                        <View style={styles.headerStyle}>
+                            {this.renderHead("Nume abonament", "Valabilitate")}
+                        </View>
 
-                {
-                    this.tableData.forEach(elem =>
-                        ourTableColumns.push(this.renderRow(elem.nume, elem.valab, elem.id))
-                    )
-                }
+                        {
+                            this.tableData.forEach(elem =>
+                                ourTableColumns.push(this.renderRow(elem.nume, elem.valab, elem.id))
+                            )
+                        }
 
-                <View style={styles.columnsStyle}>
-                    {ourTableColumns}
-                </View>
+                        <View style={styles.columnsStyle}>
+                            {ourTableColumns}
+                        </View>
 
-            </ScrollView>
+                    </ScrollView>
+                )}
+            />
         );
     }
 }

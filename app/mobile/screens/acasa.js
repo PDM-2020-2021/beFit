@@ -32,7 +32,7 @@ export default class Acasa extends React.Component {
       return (
         <View style={[SharedStyles.home_container, SharedStyles.comicStyle]}>
 
-          <Image source={require('../shared/static/logo/logo.png')} />
+          <Image style = {styles.image} source={require('../shared/static/logo/logo.png')} />
 
           <BfLabeledButton
             title="Autentificare"
@@ -43,18 +43,6 @@ export default class Acasa extends React.Component {
           <BfLabeledButton
             title="Înregistrare"
             onPress={() => this.props.navigation.navigate("Inregistrare")}
-            custom_styles={styles.labeled_button}
-          />
-
-          <BfLabeledButton
-            title="Abonamente"
-            onPress={() => this.props.navigation.navigate("Abonamente")}
-            custom_styles={styles.labeled_button}
-          />
-
-          <BfLabeledButton
-            title="Profil"
-            onPress={() => this.props.navigation.navigate("Profil")}
             custom_styles={styles.labeled_button}
           />
 
@@ -82,5 +70,9 @@ const styles = StyleSheet.create({
   labeled_button: {
     color: "#000",
     margin: 6
+  },
+  image:{
+    marginTop: '50%',
+    marginBottom: 200,
   }
 })

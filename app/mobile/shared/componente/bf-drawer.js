@@ -34,7 +34,7 @@ export default class BfDrawer extends React.Component {
                     custom_styles={styles.textActiune}
                 />
                 <BfLabeledButton
-                    onPress={() => this.props.navigation.navigate("Teste")}
+                    onPress={() => this.props.navigation.navigate("Test")}
                     title={'Încărcare cont'}
                     custom_styles={styles.textActiune}
                 />
