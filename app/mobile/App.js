@@ -14,6 +14,11 @@ import Test from './screens/test';
 import Profil from './screens/profil';
 import ActualizareProfil from './screens/profil-actualizare';
 
+import Admin from './screens/admin_screens/admin';
+import AbonamentActualizare from './screens/admin_screens/abonament-actualizare';
+import AbonamentCreare from './screens/admin_screens/abonament-creare';
+
+
 const { Navigator, Screen } = createStackNavigator();
 
 const AuthStack = () => (
@@ -85,6 +90,30 @@ const AuthStack = () => (
       } />
     <Screen name="ActualizareProfil"
       component={ActualizareProfil}
+      options={
+        {
+          headerShown: false,
+          headerStyle: styles.topBarStyle
+        }
+      } />
+    <Screen name="Admin"
+      component={Admin}
+      options={
+        {
+          headerShown: false,
+          headerStyle: styles.topBarStyle
+        }
+      } />
+    <Screen name="AbonamentCreare"
+      component={AbonamentCreare}
+      options={
+        {
+          headerShown: false,
+          headerStyle: styles.topBarStyle
+        }
+      } />
+    <Screen name="AbonamentActualizare"
+      component={AbonamentActualizare}
       options={
         {
           headerShown: false,
