@@ -68,7 +68,6 @@ export default class Acasa extends React.Component {
 
 const styles = StyleSheet.create({
   labeled_button: {
-    color: "#000",
     margin: 6
   },
   image:{
