@@ -3,10 +3,7 @@ import {
     StyleSheet,
     View,
     DrawerLayoutAndroid,
-    Button,
-    Text,
     Image,
-    TouchableOpacity
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -15,6 +12,7 @@ import BfLabeledButton from '../componente/bf-labeled-button'
 export default class BfDrawer extends React.Component {
     constructor(props) {
         super(props);
+        this.drawer=React.createRef();
     }
     navigationView = () => (
         <View style={[styles.drawerContainer]}>
@@ -24,17 +22,26 @@ export default class BfDrawer extends React.Component {
 
             <View style={styles.drawerContent}>
                 <BfLabeledButton
-                    onPress={() => this.props.navigation.navigate("Profil")}
+                    onPress={() => {
+                        this.drawer.current.closeDrawer();
+                        this.props.navigation.navigate("Profil");
+                    }}
                     title={'Profil'}
                     custom_styles={styles.textActiune}
                 />
                 <BfLabeledButton
-                    onPress={() => this.props.navigation.navigate("Abonamente")}
+                    onPress={() => {
+                        this.drawer.current.closeDrawer();
+                        this.props.navigation.navigate("Abonamente");
+                    }}
                     title={'Abonamente'}
                     custom_styles={styles.textActiune}
                 />
                 <BfLabeledButton
-                    onPress={() => this.props.navigation.navigate("Test")}
+                    onPress={() => {
+                        this.drawer.current.closeDrawer();
+                        this.props.navigation.navigate("Test");
+                    }}
                     title={'Încărcare cont'}
                     custom_styles={styles.textActiune}
                 />
@@ -52,7 +59,7 @@ export default class BfDrawer extends React.Component {
     render() {
         return (
             <DrawerLayoutAndroid
-                ref={(r) => this.drawer = r}
+                ref={this.drawer}
                 drawerWidth={300}
                 drawerPosition={"left"}
                 renderNavigationView={this.navigationView}

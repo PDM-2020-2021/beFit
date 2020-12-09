@@ -6,22 +6,39 @@ import {
 } from 'react-native';
 
 import { ScrollView } from 'react-native-gesture-handler';
-import SharedVariables from '../shared/assets/shared-variables'
+import SharedVariables from '../shared/assets/shared-variables';
 import BfButton from '../shared/componente/bf-button';
 import BfTextInput from '../shared/componente/bf-text-input';
 import BfModal from '../shared/componente/bf-modal';
+import UserUpdateModel from '../shared/logic/models/user-update-model';
 
 export default class ActualizareProfil extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { modalVisible: false };
+        this.state = {
+            modalVisible: false,
+            firstname: this.userData.firstname,
+            lastname: this.userData.lastname,
+            email: this.userData.email,
+            phone: this.userData.phone,
+            password: '',
+            newPassword: ''
+        };
     }
-
+    userData = {
+        firstname: 'Bors',
+        lastname: 'Gheorghe',
+        email: 'borsgheorghe@gmail.com',
+        phone: '0747823823'
+    }
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
     }
     modalYesPressed() {
         console.log('YES PRESSED');
+        const { firstname, lastname, email, phone, password, newPassword } = this.state;
+        var user = new UserUpdateModel(firstname, lastname, email, phone, password, newPassword);
+        console.log(user);
         this.setModalVisible(false);
     }
     modalNoPressed() {
@@ -50,24 +67,36 @@ export default class ActualizareProfil extends React.Component {
                         maxLength={15}
                         image={require('../shared/static/icons/hooman.png')}
                         custom_styles={styles.input}
+
+                        value={this.state.lastname}
+                        onChangeText={text => this.setState({ lastname: text })}
                     />
                     <BfTextInput
                         placeholder="Prenume nou"
                         maxLength={20}
                         image={require('../shared/static/icons/hooman.png')}
                         custom_styles={styles.input}
+
+                        value={this.state.firstname}
+                        onChangeText={text => this.setState({ firstname: text })}
                     />
                     <BfTextInput
                         placeholder="Email nou"
                         maxLength={30}
                         image={require('../shared/static/icons/email.png')}
                         custom_styles={styles.input}
+
+                        value={this.state.email}
+                        onChangeText={text => this.setState({ email: text })}
                     />
                     <BfTextInput
                         placeholder="Număr nou de telefon"
                         maxLength={10}
                         image={require('../shared/static/icons/phone.png')}
                         custom_styles={styles.input}
+
+                        value={this.state.phone}
+                        onChangeText={text => this.setState({ phone: text })}
                     />
                     <BfTextInput
                         placeholder="Parola actuală"
@@ -75,6 +104,9 @@ export default class ActualizareProfil extends React.Component {
                         maxLength={15}
                         image={require('../shared/static/icons/password.png')}
                         custom_styles={styles.input}
+
+                        value={this.state.password}
+                        onChangeText={text => this.setState({ password: text })}
                     />
                     <BfTextInput
                         placeholder="Parola nouă"
@@ -82,6 +114,9 @@ export default class ActualizareProfil extends React.Component {
                         maxLength={15}
                         image={require('../shared/static/icons/password.png')}
                         custom_styles={styles.input}
+
+                        value={this.state.newPassword}
+                        onChangeText={text => this.setState({ newPassword: text })}
                     />
                     <BfButton
                         title="Actualizare"

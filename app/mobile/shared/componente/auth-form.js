@@ -22,13 +22,13 @@ export default class AuthForm extends React.Component {
             error: null,
             isLoaded: false,
         };
-        this.submit = this.submit.bind(this);
     }
 
     submit() {
         const { email, password } = this.state;
         var user = new UserAuthModel(email, password);
-        api.post('http://localhost:8080/api/auth/signin', user)
+        console.log(user);
+        /*api.post('http://localhost:8080/api/auth/signin', user)
             .then(data => {
                 console.log(data);
             })
@@ -37,8 +37,7 @@ export default class AuthForm extends React.Component {
             },
             (error) => {
                 console.log(error);
-            });
-
+            });*/
     }
     render() {
         return (
@@ -53,10 +52,10 @@ export default class AuthForm extends React.Component {
                 />
                 <BfTextInput
                     placeholder="Parola"
-                    secured = {true}
+                    secured={true}
                     maxLength={15}
                     image={require('../static/icons/password.png')}
-                    custom_styles = {{ fontFamily: "Comic" }}
+                    custom_styles={{ fontFamily: "Comic" }}
 
                     value={this.state.password}
                     onChangeText={text => this.setState({ password: text })}
