@@ -16,7 +16,12 @@ export default class Profil extends React.Component {
     constructor(props) {
         super(props);
     }
-
+    userData ={
+        firstname: 'Bors',
+        lastname: 'Gheorghe',
+        email: 'borsgheorghe@gmail.com',
+        phone: '0747823823'
+    }
     tableData = [
         { id: 1, nume: 'Abonament spa', valab: 17 },
         { id: 2, nume: 'Abonament fitness', valab: 18 },
@@ -67,9 +72,10 @@ export default class Profil extends React.Component {
 
                         <View style={styles.userInfoContainer}>
                             <Text style={styles.titleStyle}>Date utilizator</Text>
-                            <Text style={styles.textStyle}>Nume: nume_utilizator</Text>
-                            <Text style={styles.textStyle}>Prenume: prenume_utilizator</Text>
-                            <Text style={styles.textStyle}>Email: email_utilizator</Text>
+                            <Text style={styles.textStyle}>Nume: {this.userData.firstname}</Text>
+                            <Text style={styles.textStyle}>Prenume: {this.userData.lastname}</Text>
+                            <Text style={styles.textStyle}>Email: {this.userData.email}</Text>
+                            <Text style={styles.textStyle}>Telefon: {this.userData.phone}</Text>
 
                             <View style={styles.updateProfilStyle}>
                                 <BfLabeledButton
