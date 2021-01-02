@@ -28,7 +28,7 @@ export default class AuthForm extends React.Component {
         const { email, password } = this.state;
         var user = new UserAuthModel(email, password);
         console.log(user);
-        /*api.post('http://localhost:8080/api/auth/signin', user)
+        api.post('http://localhost:8080/api/auth/signin', user)
             .then(data => {
                 console.log(data);
             })
@@ -37,7 +37,7 @@ export default class AuthForm extends React.Component {
             },
             (error) => {
                 console.log(error);
-            });*/
+            });
     }
     render() {
         return (
