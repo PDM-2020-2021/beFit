@@ -22,7 +22,7 @@ export default class AppTile extends React.Component {
                     <View>
                         <Text style={styles.title}>{this.props.title}</Text>
                     </View>
-                    <Image source={this.props.getImage} style={styles.imgResizer}></Image>
+                    <Image source={{uri: this.props.getImage}} style={styles.imgResizer}></Image>
 
                     <View style={styles.abInfoStyle}>
                         <View>

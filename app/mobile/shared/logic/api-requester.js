@@ -1,4 +1,4 @@
-const apiUrl = "192.168.1.35:8080/api";
+const apiUrl = "http://192.168.1.35:8080/api";
 
 export async function post(route = '', data = {}) {
     const response = await fetch(apiUrl + route, {
