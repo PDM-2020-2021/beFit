@@ -10,18 +10,12 @@ import { ScrollView } from 'react-native-gesture-handler';
 import SharedVariables from '../shared/assets/shared-variables'
 import BfLabeledButton from '../shared/componente/bf-labeled-button';
 import BfDrawer from '../shared/componente/bf-drawer';
+import * as api from '../shared/logic/api-requester';
+import * as storage from '../shared/logic/storage-requester';
+
 
 export default class Profil extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-    userData ={
-        firstname: 'Bors',
-        lastname: 'Gheorghe',
-        email: 'borsgheorghe@gmail.com',
-        phone: '0747823823'
-    }
     tableData = [
         { id: 1, nume: 'Abonament spa', valab: 17 },
         { id: 2, nume: 'Abonament fitness', valab: 18 },
@@ -32,6 +26,26 @@ export default class Profil extends React.Component {
         { id: 7, nume: 'Abonament cardio', valab: 19 },
         { id: 8, nume: 'Abonament golf', valab: 20 },
     ];
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            userData: {},
+            abonamente: []
+        };
+        storage.get('user')
+            .then(u => {
+                const user = JSON.parse(u);
+                api.get(`/user/${user.id}`, { Authorization: `Bearer ${user.token}` })
+                    .then(r => {
+                        this.setState({ userData: r });
+                        this.setState({ abonamente: r.abonamente })
+                    })
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+    }
+
 
     renderRow(val1, val2, id) {
         return (
@@ -72,15 +86,16 @@ export default class Profil extends React.Component {
 
                         <View style={styles.userInfoContainer}>
                             <Text style={styles.titleStyle}>Date utilizator</Text>
-                            <Text style={styles.textStyle}>Nume: {this.userData.firstname}</Text>
-                            <Text style={styles.textStyle}>Prenume: {this.userData.lastname}</Text>
-                            <Text style={styles.textStyle}>Email: {this.userData.email}</Text>
-                            <Text style={styles.textStyle}>Telefon: {this.userData.phone}</Text>
+                            <Text style={styles.textStyle}>Nume: {this.state.userData.firstname}</Text>
+                            <Text style={styles.textStyle}>Prenume: {this.state.userData.lastname}</Text>
+                            <Text style={styles.textStyle}>Email: {this.state.userData.email}</Text>
+                            <Text style={styles.textStyle}>Telefon: {this.state.userData.phone}</Text>
+                            <Text style={styles.textStyle}>Balans: {this.state.userData.balance}</Text>
 
                             <View style={styles.updateProfilStyle}>
                                 <BfLabeledButton
                                     title="Actualizare profil"
-                                    onPress={() => this.props.navigation.navigate("ActualizareProfil")}
+                                    onPress={() => this.props.navigation.navigate("ActualizareProfil", { 'userData': this.state.userData })}
                                     custom_styles={{ color: SharedVariables.darkOrange }}
                                 ></BfLabeledButton>
                             </View>
@@ -90,12 +105,12 @@ export default class Profil extends React.Component {
                         <Text style={styles.bigTextStyle}>Abonamentele tale:</Text>
 
                         <View style={styles.headerStyle}>
-                            {this.renderHead("Nume abonament", "Valabilitate")}
+                            {this.renderHead("Titlu", "Expiră la")}
                         </View>
 
                         {
-                            this.tableData.forEach(elem =>
-                                ourTableColumns.push(this.renderRow(elem.nume, elem.valab, elem.id))
+                            this.state.abonamente.forEach(elem =>
+                                ourTableColumns.push(this.renderRow(elem.title, elem.expirationDate, elem.id.abonamentId))
                             )
                         }
 

@@ -8,9 +8,9 @@ import BfTextInput from './bf-text-input';
 import BfButton from './bf-button';
 import BfLabeledButton from './bf-labeled-button';
 import SharedVariables from '../assets/shared-variables';
-
 import UserAuthModel from '../logic/models/user-auth-model';
-import * as api from '../logic/api-requester'
+import * as api from '../logic/api-requester';
+import * as logic from '../logic/logic'
 
 export default class AuthForm extends React.Component {
     constructor(props) {
@@ -27,15 +27,15 @@ export default class AuthForm extends React.Component {
     submit() {
         const { email, password } = this.state;
         var user = new UserAuthModel(email, password);
-        console.log(user);
+
         api.post('/auth/signin', user)
             .then(data => {
-                console.log(data);
+                return data.token;
             })
-            .then((response) => {
-                console.log(response);
-            },
-            (error) => {
+            .then(token => {
+                logic.handleUserAuthenticationRequest(token, this.props.navigation);
+            })
+            .catch((error) => {
                 console.log(error);
             });
     }

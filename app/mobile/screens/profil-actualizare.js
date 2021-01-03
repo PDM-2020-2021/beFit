@@ -25,12 +25,7 @@ export default class ActualizareProfil extends React.Component {
             newPassword: ''
         };
     }
-    userData = {
-        firstname: 'Bors',
-        lastname: 'Gheorghe',
-        email: 'borsgheorghe@gmail.com',
-        phone: '0747823823'
-    }
+    userData = this.props.route.params.userData;
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
     }

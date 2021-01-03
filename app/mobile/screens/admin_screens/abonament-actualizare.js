@@ -14,7 +14,7 @@ export default class AbonamentActualizare extends React.Component {
     render() {
         return (
             <View>
-                <Text>AbonamentActualizare</Text>
+                <Text>Screen actualizare abonament</Text>
             </View>
         )
     }

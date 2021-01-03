@@ -9,6 +9,8 @@ import BfButton from './bf-button';
 import BfLabeledButton from './bf-labeled-button';
 import SharedVariables from '../assets/shared-variables';
 import UserRegisterModel from '../logic/models/user-reg-model'
+import * as api from '../logic/api-requester';
+import * as logic from '../logic/logic'
 
 export default class RegForm extends React.Component {
     constructor(props) {
@@ -24,7 +26,16 @@ export default class RegForm extends React.Component {
     submit() {
         const { firstname, lastname, email, phone, password } = this.state;
         var user = new UserRegisterModel(firstname, lastname, email, phone, password);
-        console.log(user);
+        api.post('/auth/signup', user)
+            .then(data => {
+                return data.token;
+            })
+            .then(token => {
+                logic.handleUserAuthenticationRequest(token, this.props.navigation);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
     render() {
         return (
