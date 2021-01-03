@@ -27,6 +27,7 @@ export default class AuthForm extends React.Component {
     submit() {
         const { email, password } = this.state;
         var user = new UserAuthModel(email, password);
+
         api.post('/auth/signin', user)
             .then(data => {
                 return data.token;
