@@ -10,11 +10,20 @@ import BfButton from '../shared/componente/bf-button';
 import BfModal from '../shared/componente/bf-modal';
 import { ScrollView } from "react-native-gesture-handler";
 import SharedVariables from "../shared/assets/shared-variables";
+import * as api from '../shared/logic/api-requester'
 
 export default class Detalii extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { modalVisible: false };
+        this.state = { modalVisible: false, abDetails: {} };
+
+        api.get('/abonament/' + this.props.route.params.id)
+            .then((response) => {
+                this.setState({ abDetails: response });
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     setModalVisible = (visible) => {
@@ -32,29 +41,30 @@ export default class Detalii extends React.Component {
         console.log('Dismissed');
         this.setModalVisible(false);
     }
+
     render() {
         return (
             <ScrollView style={styles.detaliiContainer}>
 
                 <View style={styles.imageContainer}>
-                    <Image source={require('../shared/static/images/fitness.jpg')}
+                    <Image source={{ uri: 'data:image/png;base64,' + this.state.abDetails.image }}
                         style={styles.imgStyle}></Image>
                 </View>
 
                 <View style={styles.infoContainer}>
                     <View>
-                        <Text style={styles.titleStyle}>{this.props.title}Titlu abonament</Text>
+                        <Text style={styles.titleStyle}>{this.state.abDetails.title}</Text>
                     </View>
 
                     <View style={styles.categoryContainer}>
-                        <Text style={styles.textStyle}>Categorie: {this.props.category}</Text>
-                        <Text style={styles.textStyle}>Data adăugării: {this.props.addedDate} </Text>
-                        <Text style={styles.textStyle}>Ofertă valabilă până la: {this.props.expirationDate}</Text>
-                        <Text style={styles.textStyle}>Valabil {this.props.valability}d zile de la activare.</Text>
+                        <Text style={styles.textStyle}>Categorie: {this.state.abDetails.category}</Text>
+                        <Text style={styles.textStyle}>Data adăugării: {this.state.abDetails.addedDate} </Text>
+                        <Text style={styles.textStyle}>Ofertă valabilă până la: {this.state.abDetails.expirationDate}</Text>
+                        <Text style={styles.textStyle}>Valabil {this.state.abDetails.valability} zile de la activare.</Text>
                     </View>
 
                     <View style={styles.descriptionContainer}>
-                        <Text style={styles.descriptionText}>{this.props.description}Descriere: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
+                        <Text style={styles.descriptionText}>Descriere: {'\r\n' + this.state.abDetails.description}</Text>
                     </View>
                 </View>
 
@@ -75,7 +85,6 @@ export default class Detalii extends React.Component {
                 </BfModal>
 
             </ScrollView>
-
         );
     }
 }
@@ -110,11 +119,8 @@ const styles = StyleSheet.create({
     },
     detaliiContainer: {
         backgroundColor: "#f5f5f5",
-        width: "100%",
-        height: "100%",
     },
     infoContainer: {
-        height: 250,
         marginTop: 20,
     },
     categoryContainer: {
@@ -150,7 +156,7 @@ const styles = StyleSheet.create({
     btnContainer: {
         alignItems: "center",
         justifyContent: "center",
-        height: 100
+        height: 100,
     },
     descriptionText: {
         fontFamily: "Comic",

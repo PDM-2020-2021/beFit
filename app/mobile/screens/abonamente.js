@@ -1,13 +1,13 @@
 import React from "react";
 
-import AppTile from '../shared/componente/tile'
-import SharedStyles from '../shared/assets/shared-styles'
+import AppTile from '../shared/componente/tile';
+import SharedStyles from '../shared/assets/shared-styles';
 import { ScrollView } from "react-native-gesture-handler";
 import { StyleSheet, View } from 'react-native';
 import BfDrawer from '../shared/componente/bf-drawer';
 import RNPickerSelect from 'react-native-picker-select';
 import SharedVariables from "../shared/assets/shared-variables";
-import * as api from '../shared/logic/api-requester'
+import * as api from '../shared/logic/api-requester';
 
 export default class Abonamente extends React.Component {
 
@@ -93,7 +93,6 @@ export default class Abonamente extends React.Component {
 
     render() {
         let navigation = this.props.navigation;
-        let base64Image = 'data:image/png;base64,';
 
         return (
             <BfDrawer navigation={this.props.navigation}
@@ -136,11 +135,12 @@ export default class Abonamente extends React.Component {
                             return (<AppTile
                                 navigation={navigation}
                                 key={index}
+
                                 id={ab.id}
+                                getImage={'data:image/png;base64,' + ab.image}
                                 title={ab.title}
-                                getImage={base64Image + ab.image}
-                                valability={ab.valability}
                                 price={ab.price}
+                                valability={ab.valability}
                             ></AppTile>)
                         })}
 

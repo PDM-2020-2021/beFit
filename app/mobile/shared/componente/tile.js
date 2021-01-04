@@ -16,7 +16,7 @@ export default class AppTile extends React.Component {
             <TouchableOpacity
                 style={styles.appTileContainer}
                 activeOpacity={0.8}
-                onPress={() => this.props.navigation.navigate("Detalii")}
+                onPress={() => this.props.navigation.navigate("Detalii", {"id":this.props.id})}
             >
                 <View style={styles.appTileViewContainer}>
                     <View>
