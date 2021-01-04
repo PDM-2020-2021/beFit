@@ -37,11 +37,16 @@ export default class ActualizareProfil extends React.Component {
     modalYesPressed() {
         const { firstname, lastname, email, phone, password, newPassword } = this.state;
         var user = new UserUpdateModel(firstname, lastname, email, phone, password, newPassword);
-        if(user.newPassword=== '') user.newPassword=null;
+        if (user.newPassword === '') user.newPassword = null;
         api.patch(`/user/${this.userData.id}`, user, { Authorization: `Bearer ${this.userData.token}` })
             .then(r => {
-                logic.diconnect(this.props.navigation);
-                this.setModalVisible(false);
+                if (r) {
+                    logic.diconnect(this.props.navigation);
+                    this.setModalVisible(false);
+                }
+                else{
+                    this.setModalVisible(false);
+                }
             })
             .catch(err => {
                 console.log(err);

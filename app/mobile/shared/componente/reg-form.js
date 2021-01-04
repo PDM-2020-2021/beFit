@@ -28,10 +28,12 @@ export default class RegForm extends React.Component {
         var user = new UserRegisterModel(firstname, lastname, email, phone, password);
         api.post('/auth/signup', user)
             .then(data => {
-                return data.token;
+                if (data)
+                    return data.token;
             })
             .then(token => {
-                logic.handleUserAuthenticationRequest(token, this.props.navigation);
+                if (token)
+                    logic.handleUserAuthenticationRequest(token, this.props.navigation);
             })
             .catch((error) => {
                 console.log(error);

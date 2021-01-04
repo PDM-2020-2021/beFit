@@ -10,7 +10,8 @@ import BfButton from '../shared/componente/bf-button';
 import BfModal from '../shared/componente/bf-modal';
 import { ScrollView } from "react-native-gesture-handler";
 import SharedVariables from "../shared/assets/shared-variables";
-import * as api from '../shared/logic/api-requester'
+import * as api from '../shared/logic/api-requester';
+import * as storage from '../shared/logic/storage-requester';
 
 export default class Detalii extends React.Component {
     constructor(props) {
@@ -30,15 +31,26 @@ export default class Detalii extends React.Component {
         this.setState({ modalVisible: visible });
     }
     modalYesPressed() {
-        console.log('YES PRESSED');
-        this.setModalVisible(false);
+        storage.get('user')
+            .then(u => {
+                let user = JSON.parse(u);
+                api.post(`/user/${user.id}/abonament/${this.props.route.params.id}`, {}, { Authorization: `Bearer ${user.token}` })
+                    .then((r) => {
+                        this.setModalVisible(false);
+                    })
+                    .catch(err => {
+                        this.setModalVisible(false);
+                    });
+            })
+            .catch(err => {
+                console.log(err)
+                this.setModalVisible(false);
+            });
     }
     modalNoPressed() {
-        console.log('NO PRESSED');
         this.setModalVisible(false);
     }
     modalDismiss() {
-        console.log('Dismissed');
         this.setModalVisible(false);
     }
 
