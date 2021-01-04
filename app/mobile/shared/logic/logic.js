@@ -38,3 +38,16 @@ export function handleUserAuthenticationRequest(token, navigation) {
             console.log(e);
         });
 }
+export function diconnect(navigation){
+    storage.removeItem('user')
+        .then(() => {
+            navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [
+                        { name: 'Acasa' },
+                    ],
+                }));
+        })
+        .catch(err => console.log(err));
+}

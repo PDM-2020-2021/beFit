@@ -46,12 +46,6 @@ export default class Acasa extends React.Component {
             custom_styles={styles.labeled_button}
           />
 
-          <BfLabeledButton
-            title="Teste"
-            onPress={() => this.props.navigation.navigate("Test")}
-            custom_styles={styles.labeled_button}
-          />
-
         </View>
       );
     }

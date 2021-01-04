@@ -5,9 +5,8 @@ import {
     DrawerLayoutAndroid,
     Image,
 } from 'react-native';
-import { CommonActions } from '@react-navigation/native';
 
-import * as storage from '../logic/storage-requester';
+import * as logic from '../logic/logic';
 import SharedVariables from '../assets/shared-variables';
 import BfLabeledButton from '../componente/bf-labeled-button'
 
@@ -15,20 +14,6 @@ export default class BfDrawer extends React.Component {
     constructor(props) {
         super(props);
         this.drawer = React.createRef();
-    }
-
-    handleDisconectRequest = () => {
-        storage.removeItem('user')
-            .then(() => {
-                this.props.navigation.dispatch(
-                    CommonActions.reset({
-                        index: 0,
-                        routes: [
-                            { name: 'Acasa' },
-                        ],
-                    }));
-            })
-            .catch(err => console.log(err));
     }
 
     navigationView = () => (
@@ -57,7 +42,7 @@ export default class BfDrawer extends React.Component {
                 <BfLabeledButton
                     onPress={() => {
                         this.drawer.current.closeDrawer();
-                        this.props.navigation.navigate("Test");
+                        this.props.navigation.navigate("Incarcare");
                     }}
                     title={'Încărcare cont'}
                     custom_styles={styles.textActiune}
@@ -66,7 +51,7 @@ export default class BfDrawer extends React.Component {
 
             <View style={styles.drawerFooter}>
                 <BfLabeledButton
-                    onPress={() => this.handleDisconectRequest()}
+                    onPress={() => logic.diconnect(this.props.navigation)}
                     title={'Deconectare'}
                     custom_styles={styles.textDeconectare}
                 />

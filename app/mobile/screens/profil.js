@@ -16,17 +16,6 @@ import * as storage from '../shared/logic/storage-requester';
 
 export default class Profil extends React.Component {
 
-    tableData = [
-        { id: 1, nume: 'Abonament spa', valab: 17 },
-        { id: 2, nume: 'Abonament fitness', valab: 18 },
-        { id: 3, nume: 'Abonament cardio', valab: 19 },
-        { id: 4, nume: 'Abonament golf', valab: 20 },
-        { id: 5, nume: 'Abonament spa', valab: 17 },
-        { id: 6, nume: 'Abonament fitness', valab: 18 },
-        { id: 7, nume: 'Abonament cardio', valab: 19 },
-        { id: 8, nume: 'Abonament golf', valab: 20 },
-    ];
-
     constructor(props) {
         super(props);
         this.state = {
@@ -38,8 +27,13 @@ export default class Profil extends React.Component {
                 const user = JSON.parse(u);
                 api.get(`/user/${user.id}`, { Authorization: `Bearer ${user.token}` })
                     .then(r => {
+
+                        this.userId = user.id;
+                        this.token = user.token;
+
                         this.setState({ userData: r });
-                        this.setState({ abonamente: r.abonamente })
+                        this.setState({ abonamente: r.abonamente });
+
                     })
                     .catch(err => console.log(err));
             })
@@ -79,6 +73,8 @@ export default class Profil extends React.Component {
 
     render() {
         let ourTableColumns = [];
+        const { firstname, lastname, email, phone } = this.state.userData;
+        const userData = { firstname, lastname, email, token: this.token, phone, id: this.userId };
         return (
             <BfDrawer navigation={this.props.navigation}
                 content={(
@@ -95,7 +91,7 @@ export default class Profil extends React.Component {
                             <View style={styles.updateProfilStyle}>
                                 <BfLabeledButton
                                     title="Actualizare profil"
-                                    onPress={() => this.props.navigation.navigate("ActualizareProfil", { 'userData': this.state.userData })}
+                                    onPress={() => this.props.navigation.navigate("ActualizareProfil", { 'userData': userData })}
                                     custom_styles={{ color: SharedVariables.darkOrange }}
                                 ></BfLabeledButton>
                             </View>

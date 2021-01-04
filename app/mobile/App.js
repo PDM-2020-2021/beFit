@@ -10,14 +10,10 @@ import Inregistrare from './screens/inregistrare';
 import Autentificare from './screens/autentificare';
 import Abonamente from './screens/abonamente';
 import Detalii from './screens/detalii';
-import Test from './screens/test';
+import Incarcare from './screens/incarcare-cont';
 import Profil from './screens/profil';
 import ActualizareProfil from './screens/profil-actualizare';
-
 import Admin from './screens/admin_screens/admin';
-import AbonamentActualizare from './screens/admin_screens/abonament-actualizare';
-import AbonamentCreare from './screens/admin_screens/abonament-creare';
-
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -68,11 +64,11 @@ const AuthStack = () => (
           headerStyle: styles.topBarStyle
         }
       } />
-    <Screen name="Test"
-      component={Test}
+    <Screen name="Incarcare"
+      component={Incarcare}
       options={
         {
-          title: 'Pagina de testare',
+          title: 'Încărcare cont',
           headerShown: true,
           headerTitleAlign: 'center',
           headerStyle: styles.topBarStyle
@@ -98,22 +94,6 @@ const AuthStack = () => (
       } />
     <Screen name="Admin"
       component={Admin}
-      options={
-        {
-          headerShown: false,
-          headerStyle: styles.topBarStyle
-        }
-      } />
-    <Screen name="AbonamentCreare"
-      component={AbonamentCreare}
-      options={
-        {
-          headerShown: false,
-          headerStyle: styles.topBarStyle
-        }
-      } />
-    <Screen name="AbonamentActualizare"
-      component={AbonamentActualizare}
       options={
         {
           headerShown: false,

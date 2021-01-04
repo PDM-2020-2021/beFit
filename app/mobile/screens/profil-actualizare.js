@@ -4,13 +4,16 @@ import {
     StyleSheet,
     Text,
 } from 'react-native';
-
 import { ScrollView } from 'react-native-gesture-handler';
+
 import SharedVariables from '../shared/assets/shared-variables';
 import BfButton from '../shared/componente/bf-button';
 import BfTextInput from '../shared/componente/bf-text-input';
 import BfModal from '../shared/componente/bf-modal';
 import UserUpdateModel from '../shared/logic/models/user-update-model';
+import * as api from '../shared/logic/api-requester';
+import * as logic from '../shared/logic/logic';
+
 
 export default class ActualizareProfil extends React.Component {
     constructor(props) {
@@ -26,22 +29,30 @@ export default class ActualizareProfil extends React.Component {
         };
     }
     userData = this.props.route.params.userData;
+
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
     }
+
     modalYesPressed() {
-        console.log('YES PRESSED');
         const { firstname, lastname, email, phone, password, newPassword } = this.state;
         var user = new UserUpdateModel(firstname, lastname, email, phone, password, newPassword);
-        console.log(user);
-        this.setModalVisible(false);
+        if(user.newPassword=== '') user.newPassword=null;
+        api.patch(`/user/${this.userData.id}`, user, { Authorization: `Bearer ${this.userData.token}` })
+            .then(r => {
+                logic.diconnect(this.props.navigation);
+                this.setModalVisible(false);
+            })
+            .catch(err => {
+                console.log(err);
+                this.setModalVisible(false);
+            });
+
     }
     modalNoPressed() {
-        console.log('NO PRESSED');
         this.setModalVisible(false);
     }
     modalDismiss() {
-        console.log('Dismissed');
         this.setModalVisible(false);
     }
     render() {
@@ -123,7 +134,7 @@ export default class ActualizareProfil extends React.Component {
                         onYes={this.modalYesPressed.bind(this)}
                         onNo={this.modalNoPressed.bind(this)}
                         onRequestClose={this.modalDismiss.bind(this)}
-                        modalText={"Salvezi modificările făcute?"}>
+                        modalText={"Executarea cu succes a acestei acţiuni te va deconecta, eşti sigur că vrei să continui?"}>
                     </BfModal>
 
                 </View>
