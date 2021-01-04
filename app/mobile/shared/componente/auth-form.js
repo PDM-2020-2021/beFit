@@ -30,14 +30,14 @@ export default class AuthForm extends React.Component {
 
         api.post('/auth/signin', user)
             .then(data => {
-                return data.token;
+                if(data)
+                    return data.token;
             })
             .then(token => {
-                logic.handleUserAuthenticationRequest(token, this.props.navigation);
+                if(token)
+                    logic.handleUserAuthenticationRequest(token, this.props.navigation);
             })
-            .catch((error) => {
-                console.log(error);
-            });
+            .catch(err=>console.log(err.message));
     }
     render() {
         return (
