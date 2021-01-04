@@ -48,7 +48,7 @@ export default class Profil extends React.Component {
                     <BfLabeledButton
                         custom_styles={styles.rowText1Style}
                         title={val1}
-                        onPress={() => this.props.navigation.navigate("Detalii")}
+                        onPress={() => this.props.navigation.navigate("Detalii", { "id": id })}
                     />
                 </View>
                 <View style={{ flex: 1, alignSelf: 'stretch' }} >
@@ -138,18 +138,18 @@ const styles = StyleSheet.create({
     },
     rowText2Style: {
         fontSize: 15,
-        marginLeft: 72,
+        marginLeft: 50,
         fontFamily: "Comic",
     },
     headText1Style: {
         fontSize: 18,
-        marginLeft: 10,
+        marginLeft: 20,
         marginTop: 7,
         fontFamily: "Comic",
     },
     headText2Style: {
         fontSize: 18,
-        marginLeft: 35,
+        marginLeft: 50,
         marginTop: 7,
         fontFamily: "Comic",
     },
