@@ -4,8 +4,10 @@ import {
     StyleSheet,
 } from 'react-native';
 import SharedStyles from '../shared/assets/shared-styles';
-
-import BfDrawer from '../shared/componente/bf-drawer'
+import BfDrawer from '../shared/componente/bf-drawer';
+import BfButton from '../shared/componente/bf-button';
+import * as api from '../shared/logic/api-requester';
+import * as storage from '../shared/logic/storage-requester';
 
 export default class Incarcare extends React.Component {
     constructor(props) {
@@ -13,7 +15,28 @@ export default class Incarcare extends React.Component {
     }
     content = (
         <View style={SharedStyles.container}>
-
+            <BfButton
+                custom_styles={styles.btnStyle}
+                title="Adaugă bani"
+                onPress={() => {
+                    storage.get('user')
+                        .then((usr) => {
+                            const user = JSON.parse(usr);
+                            api.patch('/user/' + user.id + '/balance', {}, { Authorization: `Bearer ${user.token}` })
+                                .then(response => {
+                                    //console.log(response);
+                                })
+                                .catch(error => {
+                                    console.log(error);
+                                });
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                    this.props.navigation.navigate("Profil");
+                    this.forceUpdate();
+                }}
+            />
         </View>
     );
 
@@ -27,5 +50,8 @@ export default class Incarcare extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
+    btnStyle: {
+        marginLeft: 20,
+        marginRight: 20,
+    }
 });
