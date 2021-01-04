@@ -1,4 +1,4 @@
-const apiUrl = "http://192.168.1.35:8080/api";
+const apiUrl = "http://192.168.1.34:8080/api";
 export async function get(route = '', headers = {}) {
     let reqHeaders = {
         method: 'GET',
