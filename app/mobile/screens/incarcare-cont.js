@@ -24,7 +24,8 @@ export default class Incarcare extends React.Component {
                             const user = JSON.parse(usr);
                             api.patch('/user/' + user.id + '/balance', {}, { Authorization: `Bearer ${user.token}` })
                                 .then(response => {
-                                    //console.log(response);
+                                    this.props.navigation.navigate("Profil", { 'balanceNeedsUpdate': true });
+                                    this.forceUpdate();
                                 })
                                 .catch(error => {
                                     console.log(error);
@@ -33,8 +34,6 @@ export default class Incarcare extends React.Component {
                         .catch(error => {
                             console.log(error);
                         });
-                    this.props.navigation.navigate("Profil");
-                    this.forceUpdate();
                 }}
             />
         </View>
